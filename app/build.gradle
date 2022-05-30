@@ -33,6 +33,6 @@ dependencies {
     //For more information: http://developers.ironsrc.com/ironsource-mobile/android/mediation-networks-android/
 
     // TODO in your project you should use dependency on Maven repository
-//     implementation 'com.startapp:ironsource-mediation:1.+'
-    implementation project(':adapter')
+     implementation 'com.github.Tempo-Platform:tempo-android-ironsource-mediation:0.0.3'
+//    implementation project(':adapter')
 }
