@@ -7,8 +7,8 @@ android {
         applicationId "com.ironsource.adapters.custom.tempo.demo"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 12
+        versionName "1.12"
     }
     buildTypes {
         release {
