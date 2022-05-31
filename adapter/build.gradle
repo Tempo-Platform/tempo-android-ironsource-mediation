@@ -29,8 +29,8 @@ afterEvaluate {
 
 dependencies {
     api 'com.ironsource.sdk:mediationsdk:7.2.2'
-    api 'com.stripe:stripe-android:20.2.2'
-    implementation 'com.github.Tempo-Platform:tempo-android-sdk-release:0.0.16'
+    implementation 'com.stripe:stripe-android:20.2.2'
+    implementation 'com.github.Tempo-Platform:tempo-android-sdk-release:0.0.15'
     // noinspection GradleDependency
     implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
     // noinspection GradleDependency
