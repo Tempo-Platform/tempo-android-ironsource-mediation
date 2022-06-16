@@ -32,7 +32,7 @@ public class DemoActivity extends Activity implements RewardedVideoListener, Off
 
     private final String TAG = "DemoActivity";
     // TODO find your app key in IronSource portal
-    private final String APP_KEY = "13901aeb1";
+    private final String APP_KEY = "1541991a9";
     private final String FALLBACK_USER_ID = "userId";
     private Button mVideoButton;
     private Button mOfferwallButton;
