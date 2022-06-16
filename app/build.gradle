@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.ironsource.adapters.custom.tempo.demo"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 31
         versionCode 12
         versionName "1.12"
@@ -33,6 +33,6 @@ dependencies {
     //For more information: http://developers.ironsrc.com/ironsource-mobile/android/mediation-networks-android/
 
     // TODO in your project you should use dependency on Maven repository
-     implementation 'com.github.Tempo-Platform:tempo-android-ironsource-mediation:0.0.3'
-//    implementation project(':adapter')
+//     implementation 'com.github.Tempo-Platform:tempo-android-ironsource-mediation:0.0.3'
+    implementation project(':adapter')
 }
