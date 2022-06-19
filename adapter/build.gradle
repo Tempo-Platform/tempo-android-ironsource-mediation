@@ -5,7 +5,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
     }
 
@@ -28,9 +28,10 @@ afterEvaluate {
 }
 
 dependencies {
+    api 'com.github.stripe.stripe-android:payments-core:v17.2.0'
     api 'com.ironsource.sdk:mediationsdk:7.2.2'
 //    implementation 'com.stripe:stripe-android:20.2.2'
-    implementation 'com.github.Tempo-Platform:tempo-android-sdk-release:0.0.20'
+    implementation 'com.github.Tempo-Platform:tempo-android-sdk-release:0.0.21'
     // noinspection GradleDependency
     implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
     // noinspection GradleDependency
