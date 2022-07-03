@@ -38,7 +38,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         if (DEBUG) {
             Log.v(LOG_TAG, "loadAd: " + adData.getConfiguration());
         }
-        interstitialView.initialize(activity, new AdListener() {
+        interstitialView.loadAd(activity, new AdListener() {
             @Override
             public void onAdFetchSucceeded() {
                 super.onAdFetchSucceeded();
@@ -83,6 +83,6 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         if (DEBUG) {
             Log.v(LOG_TAG, "showAd: " + adData.getConfiguration());
         }
-        interstitialView.show();
+        interstitialView.showAd();
     }
 }
