@@ -1,6 +1,6 @@
 # Tempo Mediation Adapter for IronSource (Android)
 
-## Setup Tempo
+## Setup Tempo 
 
 1. [Register a Publisher account][1]
 2. We will email you an **Account ID** and **App ID**. You will need to use this **App ID** later in Ironsource Dashboard Custom Adapter Setup.
