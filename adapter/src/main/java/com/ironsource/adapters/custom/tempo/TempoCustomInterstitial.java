@@ -10,6 +10,9 @@ import android.util.Log;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.ironsource.mediationsdk.IronSource;
 import com.ironsource.mediationsdk.adunit.adapter.BaseInterstitial;
 import com.ironsource.mediationsdk.adunit.adapter.listener.InterstitialAdListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
@@ -18,11 +21,12 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
 import com.tempoplatform.ads.InterstitialView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter> {
-
-    public String dynSdkVersion = "1.0.1"; // TODO: What's the relationship with base class version?
 
     private InterstitialView interstitialView;
     private boolean interstitialReady;
@@ -32,14 +36,24 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         Log.d(TEST_LOG, "TempoCustomInterstitial initialised");
     }
 
-
     @Override
     public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull InterstitialAdListener listener) {
-        String AppId = "8";// TODO: Get AppID
-        String location = "US"; // TODO: Get Location
-        String placementId = "InterstitialPlacementID"; // TODO: Get PlacementID
-        String cpmFloorStr = "20"; // TODO: Get CPM
-        Log.e(TEST_LOG, "TempoCustomAdapter created: " + AppId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
+
+        // Get App ID
+        String appId = "";
+        JSONObject obj = new JSONObject(adData.getConfiguration());
+        try {
+            appId = obj.getString("appId");
+        } catch (JSONException e) {
+            Log.e(TEST_LOG, "Could not get AppId from adData.getConfiguration()");
+        }
+
+        // Other properties must to be determined
+        String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
+        String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
+        String cpmFloorStr = "20"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
+
+        Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
         com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
@@ -77,22 +91,20 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             @Override
             public String onVersionExchange(String sdkVersion) {
                 Log.d(TEST_LOG, "Version exchange triggered");
-//                /.dynSdkVersion = sdkVersion;
-                dynSdkVersion = sdkVersion;
+                TempoCustomAdapter.dynSdkVersion = sdkVersion;
                 return TempoCustomAdapter.ADAPTER_VERSION;
-                //return super.getAdapterVersion(); // TODO: Why doesn't this work??
             }
         };
 
+        final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
         activity.runOnUiThread(() -> {
-            interstitialView = new InterstitialView("8", activity);
+            interstitialView = new InterstitialView(finalAppId, activity);
             if (location != null) {
                 interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId, location);
             } else {
                 interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
             }
         });
-
     }
 
     @Override
@@ -111,6 +123,3 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         return interstitialReady;
     }
 }
-
-
-// https://developers.is.com/ironsource-mobile/android/custom-adapter-integration-android/#step-3

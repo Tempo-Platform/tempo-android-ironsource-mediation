@@ -17,11 +17,12 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
 import com.tempoplatform.ads.RewardedView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdapter> {
-
-        public String dynSdkVersion = "1.0.1"; // TODO: What's the relationship with base class version?
 
         private RewardedView rewardedView;
         private boolean rewardedReady;
@@ -33,11 +34,22 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void loadAd(AdData adData, Activity activity, RewardedVideoAdListener listener) {
-                String AppId = "8";// TODO: Get AppID
-                String location = "US"; // TODO: Get Location
-                String placementId = "InterstitialPlacementID"; // TODO: Get PlacementID
-                String cpmFloorStr = "20"; // TODO: Get CPM
-                Log.e(TEST_LOG, "TempoCustomAdapter created: " + AppId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
+
+                // Get App ID
+                String appId = "";
+                JSONObject obj = new JSONObject(adData.getConfiguration());
+                try {
+                        appId = obj.getString("appId");
+                } catch (JSONException e) {
+                        Log.e(TEST_LOG, "Could not get AppId from adData.getConfiguration()");
+                }
+
+                // Other properties must to be determined
+                String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
+                String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
+                String cpmFloorStr = "20"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
+
+                Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
                 Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
                 com.tempoplatform.ads.RewardedAdListener tempoListener = new com.tempoplatform.ads.RewardedAdListener() {
@@ -53,6 +65,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         public void onRewardedAdFetchFailed() {
                                 Log.d(TEST_LOG, "Rewarded ad fetch failed");
                                 super.onRewardedAdFetchFailed();
+                                int adapterErrorCode = ADAPTER_ERROR_INTERNAL;
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                                 listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null); // The ad could not be displayed
                         }
@@ -75,15 +88,14 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         @Override
                         public String onVersionExchange(String sdkVersion) {
                                 Log.d(TEST_LOG, "Version exchange triggered");
-//                /.dynSdkVersion = sdkVersion;
-                                dynSdkVersion = sdkVersion;
+                                TempoCustomAdapter.dynSdkVersion = sdkVersion;
                                 return TempoCustomAdapter.ADAPTER_VERSION;
-                                //return super.getAdapterVersion(); // TODO: Why doesn't this work??
                         }
                 };
 
+                final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
                 activity.runOnUiThread(() -> {
-                        rewardedView = new RewardedView("8", activity);
+                        rewardedView = new RewardedView(finalAppId, activity);
                         if (location != null) {
                                 rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId, location);
                         } else {
@@ -100,7 +112,6 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 } else {
                         ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
                 }
-
         }
 
         @Override
