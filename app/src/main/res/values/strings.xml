@@ -4,6 +4,7 @@
     <string name="show">Show</string>
     <string name="load">Load</string>
     <string name="rv">Rewarded Video</string>
+    <string name="rw">Rewarded</string>
     <string name="ow">Offerwall</string>
     <string name="is">Interstitial</string>
     <string name="version">sdk version</string>

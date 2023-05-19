@@ -1,8 +1,8 @@
 package com.ironsource.adapters.custom.tempo;
 
-import static com.ironsource.adapters.custom.tempo.BuildConfig.DEBUG;
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType.ADAPTER_ERROR_TYPE_NO_FILL;
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors.ADAPTER_ERROR_INTERNAL;
+import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.app.Activity;
 import android.util.Log;
@@ -10,79 +10,116 @@ import android.util.Log;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.ironsource.mediationsdk.IronSource;
 import com.ironsource.mediationsdk.adunit.adapter.BaseInterstitial;
 import com.ironsource.mediationsdk.adunit.adapter.listener.InterstitialAdListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
+import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
+import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
-import com.tempoplatform.ads.AdListener;
 import com.tempoplatform.ads.InterstitialView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter> {
-    private static final String LOG_TAG = TempoCustomInterstitial.class.getSimpleName();
-    private InterstitialView interstitialView = new InterstitialView();
-    private boolean ready;
+
+    private InterstitialView interstitialView;
+    private boolean interstitialReady;
 
     public TempoCustomInterstitial(NetworkSettings networkSettings) {
         super(networkSettings);
-
-        if (DEBUG) {
-            Log.v(LOG_TAG, "ctor");
-        }
+        Log.d(TEST_LOG, "TempoCustomInterstitial initialised");
     }
 
     @Override
     public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull InterstitialAdListener listener) {
-        System.out.println("loadAd called");
-        if (DEBUG) {
-            Log.v(LOG_TAG, "loadAd: " + adData.getConfiguration());
+
+        // Get App ID
+        String appId = "";
+        JSONObject obj = new JSONObject(adData.getConfiguration());
+        try {
+            appId = obj.getString("appId");
+        } catch (JSONException e) {
+            Log.e(TEST_LOG, "Could not get AppId from adData.getConfiguration()");
         }
-        interstitialView.loadAd(activity, new AdListener() {
+
+        // Other properties must to be determined
+        String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
+        String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
+        String cpmFloorStr = "20"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
+
+        Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
+        Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
+
+        com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
             @Override
-            public void onAdFetchSucceeded() {
-                super.onAdFetchSucceeded();
-                listener.onAdLoadSuccess();
+            public void onInterstitialAdFetchSucceeded() {
+                Log.d(TEST_LOG, "Interstitial ad fetch succeeded");
+                super.onInterstitialAdFetchSucceeded();
+                listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
+                interstitialReady = true;
             }
 
             @Override
-            public void onAdFetchFailed() {
-                super.onAdFetchFailed();
-                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null);
-                listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null);
+            public void onInterstitialAdFetchFailed() {
+                Log.d(TEST_LOG, "Interstitial ad fetch failed");
+                super.onInterstitialAdFetchFailed();
+                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
+                listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null); // The ad could not be displayed
             }
 
             @Override
-            public void onInterstitialDisplayed() {
-                super.onInterstitialDisplayed();
+            public void onInterstitialAdDisplayed() {
+                Log.d(TEST_LOG, "Interstitial ad fetch displayed");
+                super.onInterstitialAdDisplayed();
                 listener.onAdShowSuccess();
             }
 
             @Override
-            public void onAdClosed() {
-                super.onAdClosed();
+            public void onInterstitialAdClosed() {
+                Log.d(TEST_LOG, "Interstitial ad closed");
+                super.onInterstitialAdClosed();
                 listener.onAdClosed();
+                interstitialReady = false;
+            }
+
+            @Override
+            public String onVersionExchange(String sdkVersion) {
+                Log.d(TEST_LOG, "Version exchange triggered");
+                TempoCustomAdapter.dynSdkVersion = sdkVersion;
+                return TempoCustomAdapter.ADAPTER_VERSION;
+            }
+        };
+
+        final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
+        activity.runOnUiThread(() -> {
+            interstitialView = new InterstitialView(finalAppId, activity);
+            if (location != null) {
+                interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId, location);
+            } else {
+                interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
             }
         });
-        listener.onAdLoadSuccess();
-        this.ready = true;
     }
 
     @Override
-    public boolean isAdAvailable(@NonNull AdData adData) {
-        System.out.println("isAdAvailable called");
-        if (DEBUG) {
-            Log.v(LOG_TAG, "isAdAvailable: " + adData.getConfiguration());
+    public void showAd(AdData adData, InterstitialAdListener ironSourceAdlistener) {
+        Log.d(TEST_LOG, "ShowAd called (" + interstitialReady + "): " + adData.getConfiguration());
+        if (interstitialReady)  {
+            interstitialView.showAd();
+        } else {
+            ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
         }
-        return ready;
     }
 
     @Override
-    public void showAd(@NonNull AdData adData, @NonNull InterstitialAdListener listener) {
-        System.out.println("Show AD called");
-        if (DEBUG) {
-            Log.v(LOG_TAG, "showAd: " + adData.getConfiguration());
-        }
-        interstitialView.showAd();
+    public boolean isAdAvailable(AdData adData) {
+        Log.d(TEST_LOG, "IsAdAvailable called: " + interstitialReady);
+        return interstitialReady;
     }
 }

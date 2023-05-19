@@ -1,6 +1,6 @@
 package com.ironsource.adapters.custom.tempo;
 
-import static com.ironsource.adapters.custom.tempo.BuildConfig.DEBUG;
+import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.content.Context;
 import android.util.Log;
@@ -16,34 +16,42 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomAdapter extends BaseAdapter {
+
+    // Version references
+    public static String dynSdkVersion = "3.3.3";
+    public static final String ADAPTER_VERSION = "4.4.4";
+
+    // Log tag for debugging
     private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
 
     public TempoCustomAdapter() {
-        if (DEBUG) {
-            Log.v(LOG_TAG, "ctor");
-        }
+        Log.d(TEST_LOG, "TempoCustomAdapter.TempoCustomAdapter created!");
     }
 
     @Override
     public void init(@NonNull AdData adData, @NonNull Context context, @Nullable NetworkInitializationListener listener) {
-        if (DEBUG) {
-            Log.v(LOG_TAG, "init: " + adData.getConfiguration());
-        }
+        Log.d(TEST_LOG, "TempoCustomAdapter.init: " + adData.getConfiguration());
 
+        // TODO: some init-success-condition, or is this enough?
         if (listener != null) {
+            // Initialization completed successfully
             listener.onInitSuccess();
+            Log.e(TEST_LOG, "Initialisation succeeded!");
+        } else {
+            // Initialization failed
+            Log.e(TEST_LOG, "Initialisation failed!");
         }
-
     }
 
     @Override
     public String getNetworkSDKVersion() {
-        return "0.0.4";
+        return dynSdkVersion;
     }
 
     @NonNull
     @Override
     public String getAdapterVersion() {
-        return "0.0.4";
+        return ADAPTER_VERSION;
     }
+
 }
