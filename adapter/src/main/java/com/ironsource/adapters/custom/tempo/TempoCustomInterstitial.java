@@ -51,7 +51,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         // Other properties must to be determined
         String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
         String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
-        String cpmFloorStr = "20"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
+        String cpmFloorStr = "0"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
 
         Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
@@ -93,6 +93,12 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 Log.d(TEST_LOG, "Version exchange triggered");
                 TempoCustomAdapter.dynSdkVersion = sdkVersion;
                 return TempoCustomAdapter.ADAPTER_VERSION;
+            }
+
+            //@Override
+            public String onGetAdapterType() {
+                Log.d(TEST_LOG, "Adapter Type requested (I)");
+                return TempoCustomAdapter.ADAPTER_TYPE;
             }
         };
 

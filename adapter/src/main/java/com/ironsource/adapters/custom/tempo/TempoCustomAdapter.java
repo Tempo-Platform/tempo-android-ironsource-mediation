@@ -18,8 +18,9 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 public class TempoCustomAdapter extends BaseAdapter {
 
     // Version references
-    public static String dynSdkVersion = "3.3.3";
-    public static final String ADAPTER_VERSION = "4.4.4";
+    public static String dynSdkVersion = "1.0.1";
+    public static final String ADAPTER_VERSION = "1.0.0";
+    public static final String ADAPTER_TYPE = "IRONSOURCE";
 
     // Log tag for debugging
     private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
@@ -31,6 +32,8 @@ public class TempoCustomAdapter extends BaseAdapter {
     @Override
     public void init(@NonNull AdData adData, @NonNull Context context, @Nullable NetworkInitializationListener listener) {
         Log.d(TEST_LOG, "TempoCustomAdapter.init: " + adData.getConfiguration());
+
+
 
         // TODO: some init-success-condition, or is this enough?
         if (listener != null) {
