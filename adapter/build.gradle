@@ -35,7 +35,7 @@ afterEvaluate {
 
 
 dependencies {
-    api 'com.github.Tempo-Platform:tempo-android-sdk-release:1.0.1'
+    api 'com.github.Tempo-Platform:tempo-android-sdk-release:1.0.2'
     //api (files("libs/tempo-android-sdk-release.aar"))
     api 'com.ironsource.sdk:mediationsdk:7.3.0.1'
     implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'

@@ -49,7 +49,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
                 String cpmFloorStr = "0"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
 
-                Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
+                //Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
                 Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
                 com.tempoplatform.ads.RewardedAdListener tempoListener = new com.tempoplatform.ads.RewardedAdListener() {
@@ -92,7 +92,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                                 return TempoCustomAdapter.ADAPTER_VERSION;
                         }
 
-                        //@Override
+                        @Override
                         public String onGetAdapterType() {
                                 Log.d(TEST_LOG, "Adapter Type requested (R)");
                                 return TempoCustomAdapter.ADAPTER_TYPE;

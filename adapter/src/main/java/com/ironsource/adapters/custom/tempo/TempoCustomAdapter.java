@@ -18,7 +18,7 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 public class TempoCustomAdapter extends BaseAdapter {
 
     // Version references
-    public static String dynSdkVersion = "1.0.1";
+    public static String dynSdkVersion = "1.0.2";
     public static final String ADAPTER_VERSION = "1.0.0";
     public static final String ADAPTER_TYPE = "IRONSOURCE";
 
@@ -26,12 +26,12 @@ public class TempoCustomAdapter extends BaseAdapter {
     private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
 
     public TempoCustomAdapter() {
-        Log.d(TEST_LOG, "TempoCustomAdapter.TempoCustomAdapter created!");
+        //Log.d(TEST_LOG, "TempoCustomAdapter.TempoCustomAdapter created!");
     }
 
     @Override
     public void init(@NonNull AdData adData, @NonNull Context context, @Nullable NetworkInitializationListener listener) {
-        Log.d(TEST_LOG, "TempoCustomAdapter.init: " + adData.getConfiguration());
+        //Log.d(TEST_LOG, "TempoCustomAdapter.init: " + adData.getConfiguration());
 
 
 
@@ -39,7 +39,7 @@ public class TempoCustomAdapter extends BaseAdapter {
         if (listener != null) {
             // Initialization completed successfully
             listener.onInitSuccess();
-            Log.e(TEST_LOG, "Initialisation succeeded!");
+            Log.d(TEST_LOG, "Initialisation succeeded!");
         } else {
             // Initialization failed
             Log.e(TEST_LOG, "Initialisation failed!");

@@ -53,7 +53,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
         String cpmFloorStr = "0"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
 
-        Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
+        //Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
         com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
@@ -95,7 +95,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 return TempoCustomAdapter.ADAPTER_VERSION;
             }
 
-            //@Override
+            @Override
             public String onGetAdapterType() {
                 Log.d(TEST_LOG, "Adapter Type requested (I)");
                 return TempoCustomAdapter.ADAPTER_TYPE;
