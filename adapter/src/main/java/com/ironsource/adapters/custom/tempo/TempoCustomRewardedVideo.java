@@ -29,7 +29,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         public TempoCustomRewardedVideo(NetworkSettings networkSettings) {
                 super(networkSettings);
-                Log.d(TEST_LOG, "TempoCustomRewardedVideo initialised");
+                Log.d(TEST_LOG, "TempoCustomRewardedVideo initialised *");
         }
 
         @Override

@@ -33,7 +33,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     public TempoCustomInterstitial(NetworkSettings networkSettings) {
         super(networkSettings);
-        Log.d(TEST_LOG, "TempoCustomInterstitial initialised");
+        Log.d(TEST_LOG, "TempoCustomInterstitial initialised *");
     }
 
     @Override
