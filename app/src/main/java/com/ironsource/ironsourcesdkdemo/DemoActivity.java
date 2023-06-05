@@ -41,7 +41,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
 
     private final String TAG = "DemoActivity";
 
-    private final String APP_KEY = "1a0348c9d"; // From IronSource portal
+    private final String APP_KEY = "1a46bef35"; // From IronSource portal
     private Button mInterstitialLoadButton;
     private Button mInterstitialShowButton;
     private Button mRewardedLoadButton;

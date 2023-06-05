@@ -48,13 +48,30 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             Log.e(TEST_LOG, "Could not get AppId from adData.getConfiguration()");
         }
 
+        // Get CPM Floor
+        String cpmFloorStr;
+        try {
+            // Confirm string is legit decimal value
+            cpmFloorStr = obj.getString("cpmFloor");
+            double decimalNumber = Double.parseDouble(cpmFloorStr);
+            cpmFloorStr = String.valueOf(decimalNumber);
+        } catch (JSONException e) {
+            Log.e(TEST_LOG, "Could not get cpmFloor from adData.getConfiguration()");
+            cpmFloorStr = "0";
+        }
+        Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
+
+        // Get Ad Unit ID
+        String adUnitId = "?";
+        try {
+            adUnitId = obj.getString("adUnitId");
+        } catch (JSONException e) {
+            Log.e(TEST_LOG, "Could not get adUnitId from adData.getConfiguration()");
+        }
+
         // Other properties must to be determined
         String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
         String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
-        String cpmFloorStr = "0"; // TODO: Get CPM - unclear how to get this, Have contacted IronSource.
-
-        //Log.e(TEST_LOG, "TempoCustomInterstitial.loadAd: " + appId + " | " + location + " | " + placementId + " | " + cpmFloorStr );
-        Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
         com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
             @Override
