@@ -240,6 +240,8 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 handleShowInterstitialButtonState(false);
             }
 
+
+
             // Invoked when end user clicked on the interstitial ad
             @Override
             public void onAdClicked(AdInfo adInfo){

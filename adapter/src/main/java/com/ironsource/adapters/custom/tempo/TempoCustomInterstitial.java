@@ -55,6 +55,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             cpmFloorStr = obj.getString("cpmFloor");
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             cpmFloorStr = String.valueOf(decimalNumber);
+            Log.e(TEST_LOG, "cpmFloor is " + cpmFloorStr);
         } catch (JSONException e) {
             Log.e(TEST_LOG, "Could not get cpmFloor from adData.getConfiguration()");
             cpmFloorStr = "0";
@@ -87,7 +88,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 Log.d(TEST_LOG, "Interstitial ad fetch failed");
                 super.onInterstitialAdFetchFailed();
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
-                listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null); // The ad could not be displayed
+                //listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null); // The ad could not be displayed
             }
 
             @Override

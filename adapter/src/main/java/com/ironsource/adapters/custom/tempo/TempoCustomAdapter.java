@@ -33,8 +33,6 @@ public class TempoCustomAdapter extends BaseAdapter {
     public void init(@NonNull AdData adData, @NonNull Context context, @Nullable NetworkInitializationListener listener) {
         //Log.d(TEST_LOG, "TempoCustomAdapter.init: " + adData.getConfiguration());
 
-
-
         // TODO: some init-success-condition, or is this enough?
         if (listener != null) {
             // Initialization completed successfully
