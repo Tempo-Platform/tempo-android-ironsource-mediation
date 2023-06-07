@@ -19,13 +19,6 @@ subprojects {
         maven { url 'https://android-sdk.is.com' }
 
     }
-
-    configurations {
-        // Exclude the :app module from all subprojects
-        all {
-            exclude module: 'app'
-        }
-    }
 }
 
 task clean(type: Delete) {

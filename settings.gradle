@@ -1,5 +1,5 @@
 rootProject.name = 'Tempo for IronSource'
 
 include ':adapter'
-include ':app'
+//include ':app'
 
