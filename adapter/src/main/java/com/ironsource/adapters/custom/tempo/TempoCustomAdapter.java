@@ -19,7 +19,7 @@ public class TempoCustomAdapter extends BaseAdapter {
 
     // Version references
     public static String dynSdkVersion = "1.0.2";
-    public static final String ADAPTER_VERSION = "1.0.1";
+    public static final String ADAPTER_VERSION = "1.0.2";
     public static final String ADAPTER_TYPE = "IRONSOURCE";
 
     // Log tag for debugging
