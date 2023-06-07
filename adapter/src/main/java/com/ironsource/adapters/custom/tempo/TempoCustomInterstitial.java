@@ -33,7 +33,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     public TempoCustomInterstitial(NetworkSettings networkSettings) {
         super(networkSettings);
-        Log.d(TEST_LOG, "TempoCustomInterstitial initialised *");
+        Log.d(TEST_LOG, "TempoCustomInterstitial initialised");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
         // Get Ad Unit ID
-        String adUnitId = "?";
+        String adUnitId = "";
         try {
             adUnitId = obj.getString("adUnitId");
         } catch (JSONException e) {

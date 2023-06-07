@@ -29,7 +29,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         public TempoCustomRewardedVideo(NetworkSettings networkSettings) {
                 super(networkSettings);
-                Log.d(TEST_LOG, "TempoCustomRewardedVideo initialised *");
+                Log.d(TEST_LOG, "TempoCustomRewardedVideo initialised");
         }
 
         @Override
@@ -59,7 +59,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
                 // Get Ad Unit ID
-                String adUnitId = "?";
+                String adUnitId = "";
                 try {
                         adUnitId = obj.getString("adUnitId");
                 } catch (JSONException e) {

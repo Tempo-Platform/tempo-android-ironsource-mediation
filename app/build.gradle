@@ -34,6 +34,5 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     implementation project(':adapter')
-//    //TODO in your project you should use dependency on Maven repository
-//    implementation 'com.github.Tempo-Platform:tempo-android-ironsource-mediation:0.0.3'
+//    implementation 'com.github.Tempo-Platform:tempo-android-ironsource-mediation:1.0.2'
 }
