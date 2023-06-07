@@ -45,7 +45,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         try {
             appId = obj.getString("appId");
         } catch (JSONException e) {
-            Log.e(TEST_LOG, "Could not get AppId from adData.getConfiguration()");
+            Log.e(TEST_LOG, "Could not get AppId from adData");
         }
 
         // Get CPM Floor
@@ -55,9 +55,9 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             cpmFloorStr = obj.getString("cpmFloor");
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             cpmFloorStr = String.valueOf(decimalNumber);
-            Log.e(TEST_LOG, "cpmFloor is " + cpmFloorStr);
+            Log.d(TEST_LOG, "cpmFloor is " + cpmFloorStr);
         } catch (JSONException e) {
-            Log.e(TEST_LOG, "Could not get cpmFloor from adData.getConfiguration()");
+            Log.d(TEST_LOG, "Could not get cpmFloor from adData");
             cpmFloorStr = "0";
         }
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
@@ -67,7 +67,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         try {
             adUnitId = obj.getString("adUnitId");
         } catch (JSONException e) {
-            Log.e(TEST_LOG, "Could not get adUnitId from adData.getConfiguration()");
+            Log.d(TEST_LOG, "Could not get adUnitId from adData");
         }
 
         // Other properties must to be determined
