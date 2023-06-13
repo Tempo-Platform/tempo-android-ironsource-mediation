@@ -1,16 +1,30 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion 31
+    namespace 'com.ironsource.adapters.custom.tempo'
+    compileSdkVersion 33
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdkVersion 24
+        targetSdkVersion 33
     }
 
     defaultConfig {
         buildConfigField 'String', 'VERSION_NAME', "\"${VERSION_NAME as String}\""
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -21,16 +35,19 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.tempo-platform'
                 artifactId = 'tempo-ironsource-mediation'
-                version = '0.0.0'
+                version = '1.0.2'
             }
         }
     }
 }
 
+
 dependencies {
-    api 'com.ironsource.sdk:mediationsdk:7.2.2'
-    api 'com.github.Tempo-Platform:tempo-android-sdk-release:0.0.37'
-    implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
-    implementation 'com.google.android.gms:play-services-basement:[17.6,18)'
-    implementation 'androidx.annotation:annotation:[1,2)'
+    api 'com.ironsource.sdk:mediationsdk:7.3.0.1'
+    api 'com.github.Tempo-Platform:tempo-android-sdk-release:1.0.3'
+//    api (files("libs/tempo-android-sdk-release.aar"))
+//    implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
+//    implementation 'com.google.android.gms:play-services-basement:[17.6,18)'
+//    implementation 'androidx.annotation:annotation:[1,2)'
+//    api 'com.google.code.gson:gson:2.10.1'
 }

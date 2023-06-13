@@ -7,42 +7,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/banner_footer">
+        android:layout_above="@+id/banner_footer"
+        android:layout_marginBottom="-1444dp">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/logo_small" />
-
-        <Button
-            android:id="@+id/rv_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ironsource_button_shape"
-            android:padding="5dp"
-            android:text="initializing rewarded video" />
-
-        <Button
-            android:id="@+id/ow_button"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/rv_button"
-            android:layout_alignLeft="@+id/rv_button"
-            android:layout_alignRight="@+id/rv_button"
-            android:layout_alignStart="@+id/rv_button"
-            android:layout_below="@+id/rv_button"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ironsource_button_shape"
-            android:text="initializing offerwall" />
 
 
         <TextView
@@ -56,24 +36,56 @@
 
         <Button
             android:id="@+id/is_button_1"
-            android:layout_width="125dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/ow_button"
-            android:layout_alignStart="@+id/ow_button"
-            android:layout_below="@+id/ow_button"
-            android:layout_marginTop="20dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="25dp"
             android:background="@drawable/ironsource_button_shape"
             android:text="Initializing Interstitial" />
 
         <Button
-            android:id="@+id/is_button_2"
-            android:layout_width="125dp"
+            android:id="@+id/rw_button_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/is_button_1"
-            android:layout_toEndOf="@+id/is_button_1"
-            android:layout_toRightOf="@+id/is_button_1"
+            android:layout_below="@+id/is_button_2"
+            android:layout_alignStart="@+id/is_button_1"
+            android:layout_alignLeft="@+id/ow_button"
+            android:layout_alignEnd="@+id/is_button_2"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/ironsource_button_shape"
+            android:text="Initializing Rewarded" />
+
+        <Button
+            android:id="@+id/is_button_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/is_button_1"
+            android:layout_alignStart="@+id/is_button_1"
+            android:layout_alignEnd="@+id/is_button_1"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="0dp"
             android:background="@drawable/ironsource_button_shape"
             android:text="Show Interstitial" />
+
+        <Button
+            android:id="@+id/rw_button_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rw_button_1"
+            android:layout_alignStart="@+id/rw_button_1"
+            android:layout_alignEnd="@+id/rw_button_1"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/ironsource_button_shape"
+            android:text="Show Reward" />
 
 
     </RelativeLayout>
