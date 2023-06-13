@@ -62,17 +62,9 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         }
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
-        // Get Ad Unit ID
-        String adUnitId = "";
-        try {
-            adUnitId = obj.getString("adUnitId");
-        } catch (JSONException e) {
-            Log.d(TEST_LOG, "Could not get adUnitId from adData");
-        }
-
         // Other properties must to be determined
-        String location = null; // TODO: Currently blank like in AppLovin, hard-coded to 'US' in SDK's second load iteration.
-        String placementId = ""; // TODO: Get PlacementID - unclear how to get this, given by customer at time of ShowAd. Have contacted IronSource.
+        String location = null; // TODO: Currently blank
+        String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
 
         com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
             @Override
@@ -133,7 +125,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public void showAd(AdData adData, InterstitialAdListener ironSourceAdlistener) {
-        Log.d(TEST_LOG, "ShowAd called (" + interstitialReady + "): " + adData.getConfiguration());
+        Log.d(TEST_LOG, "(I) ShowAd called (" + interstitialReady + ")");//: " + adData.getConfiguration());
         if (interstitialReady)  {
             interstitialView.showAd();
         } else {
@@ -143,7 +135,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public boolean isAdAvailable(AdData adData) {
-        Log.d(TEST_LOG, "IsAdAvailable called: " + interstitialReady);
+        //sLog.d(TEST_LOG, "IsAdAvailable called: " + interstitialReady);
         return interstitialReady;
     }
 }
