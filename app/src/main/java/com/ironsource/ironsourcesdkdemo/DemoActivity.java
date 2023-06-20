@@ -35,30 +35,25 @@ import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener;
 import com.ironsource.mediationsdk.sdk.OfferwallListener;
 import com.ironsource.mediationsdk.sdk.RewardedVideoListener;
 import com.ironsource.mediationsdk.utils.IronSourceUtils;
+import com.tempoplatform.ads.Constants;
 
 
 public class DemoActivity extends Activity implements ImpressionDataListener {
 
     private final String TAG = "DemoActivity";
 
-    private final String APP_KEY = "1a46bef35"; // From IronSource portal
+    // From IronSource portal
+    private final String APP_KEY_PROD = "1a46bef35";
+    private final String APP_KEY_DEV = "1a6ad0b75";
+
     private Button mInterstitialLoadButton;
     private Button mInterstitialShowButton;
     private Button mRewardedLoadButton;
     private Button mRewardedShowButton;
 
-    // ????
-    private final String FALLBACK_USER_ID = "myUserId";
-    private Placement mPlacement;
-    private FrameLayout mBannerParentLayout;
-    private IronSourceBannerLayout mIronSourceBannerLayout;
-
-//    @Override
-//    private void IronSource.showInterstitial(String placementName){}
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
         Log.e(TEST_LOG, "onCreate");
@@ -132,7 +127,6 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         // UI dressings
         TextView versionTV = (TextView) findViewById(R.id.version_txt);
         versionTV.setText(getResources().getString(R.string.version) + " " + IronSourceUtils.getSDKVersion());
-        mBannerParentLayout = (FrameLayout) findViewById(R.id.banner_footer);
     }
 
     /**
@@ -142,7 +136,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         String advertisingId = IronSource.getAdvertiserId(this);
         Log.e(TEST_LOG, "startIronSourceInitTask: " + advertisingId + " (advertisingId)");
         // We're using an advertisingId as the 'userId'
-        initIronSource(APP_KEY, advertisingId);
+        initIronSource(getAppKey(), advertisingId);
     }
 
     /**
@@ -482,6 +476,17 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         });
     }
 
+    /**
+     * Returns appropriate key determined by TempoSDK environment
+     */
+    private String getAppKey() {
+        if(Constants.IS_PROD) {
+            return APP_KEY_PROD;
+        }
+        else {
+            return APP_KEY_DEV;
+        }
+    }
 
     // Needed...?
     @Override
