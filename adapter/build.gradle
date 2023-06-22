@@ -35,7 +35,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.tempo-platform'
                 artifactId = 'tempo-ironsource-mediation'
-                version = '1.0.2'
+                version = '1.0.4.1'
             }
         }
     }
@@ -44,7 +44,7 @@ afterEvaluate {
 
 dependencies {
     api 'com.ironsource.sdk:mediationsdk:7.3.0.1'
-    api 'com.github.Tempo-Platform:tempo-android-sdk-release:1.0.3.1'
+    api 'com.github.Tempo-Platform:tempo-android-sdk-release:1.0.4'
 //    api (files("libs/tempo-android-sdk-release.aar"))
 //    implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
 //    implementation 'com.google.android.gms:play-services-basement:[17.6,18)'

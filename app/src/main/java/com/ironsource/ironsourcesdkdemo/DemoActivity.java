@@ -36,6 +36,7 @@ import com.ironsource.mediationsdk.sdk.OfferwallListener;
 import com.ironsource.mediationsdk.sdk.RewardedVideoListener;
 import com.ironsource.mediationsdk.utils.IronSourceUtils;
 import com.tempoplatform.ads.Constants;
+import com.tempoplatform.ads.TempoUtils;
 
 
 public class DemoActivity extends Activity implements ImpressionDataListener {
