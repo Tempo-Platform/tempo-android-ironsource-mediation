@@ -12,21 +12,23 @@ import androidx.annotation.Nullable;
 import com.ironsource.mediationsdk.adunit.adapter.BaseAdapter;
 import com.ironsource.mediationsdk.adunit.adapter.listener.NetworkInitializationListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
+import com.tempoplatform.ads.TempoUtils;
 
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomAdapter extends BaseAdapter {
 
     // Version references
-    public static String dynSdkVersion = "1.0.3";
-    public static final String ADAPTER_VERSION = "1.0.4";
+    public static String dynSdkVersion = "1.0.4";
+    public static final String ADAPTER_VERSION = "1.0.5"; // current 1.0.5
     public static final String ADAPTER_TYPE = "IRONSOURCE";
 
     // Log tag for debugging
-    private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
+    //private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
 
     public TempoCustomAdapter() {
         //Log.d(TEST_LOG, "TempoCustomAdapter.TempoCustomAdapter created!");
+        TempoUtils.Say("TempoAdapter: created", true);
     }
 
     @Override
@@ -37,10 +39,10 @@ public class TempoCustomAdapter extends BaseAdapter {
         if (listener != null) {
             // Initialization completed successfully
             listener.onInitSuccess();
-            Log.d(TEST_LOG, "Initialisation succeeded!");
+            TempoUtils.Say("TempoAdapter: init adapter", true);
         } else {
             // Initialization failed
-            Log.e(TEST_LOG, "Initialisation failed!");
+            TempoUtils.Shout("TempoAdapter: init adapter failed", true);
         }
     }
 

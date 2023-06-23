@@ -2,17 +2,12 @@ package com.ironsource.adapters.custom.tempo;
 
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType.ADAPTER_ERROR_TYPE_NO_FILL;
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors.ADAPTER_ERROR_INTERNAL;
-import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.app.Activity;
-import android.util.Log;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.ironsource.mediationsdk.IronSource;
 import com.ironsource.mediationsdk.adunit.adapter.BaseInterstitial;
 import com.ironsource.mediationsdk.adunit.adapter.listener.InterstitialAdListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
@@ -20,6 +15,7 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
 import com.tempoplatform.ads.InterstitialView;
+import com.tempoplatform.ads.TempoUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +29,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     public TempoCustomInterstitial(NetworkSettings networkSettings) {
         super(networkSettings);
-        Log.d(TEST_LOG, "TempoCustomInterstitial initialised");
+        TempoUtils.Say("TempoAdapter: init interstitial");
     }
 
     @Override
@@ -45,7 +41,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         try {
             appId = obj.getString("appId");
         } catch (JSONException e) {
-            Log.e(TEST_LOG, "Could not get AppId from adData");
+            TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
         }
 
         // Get CPM Floor
@@ -55,9 +51,9 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             cpmFloorStr = obj.getString("cpmFloor");
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             cpmFloorStr = String.valueOf(decimalNumber);
-            Log.d(TEST_LOG, "cpmFloor is " + cpmFloorStr);
+            TempoUtils.Say("TempoAdapter: CPMFloor=" + cpmFloorStr, true);
         } catch (JSONException e) {
-            Log.d(TEST_LOG, "Could not get cpmFloor from adData");
+            TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
             cpmFloorStr = "0";
         }
         Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
@@ -69,45 +65,44 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
             @Override
             public void onInterstitialAdFetchSucceeded() {
-                Log.d(TEST_LOG, "Interstitial ad fetch succeeded");
-                super.onInterstitialAdFetchSucceeded();
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded",true);
                 listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
                 interstitialReady = true;
+                //super.onInterstitialAdFetchSucceeded();
             }
 
             @Override
             public void onInterstitialAdFetchFailed() {
-                Log.d(TEST_LOG, "Interstitial ad fetch failed");
-                super.onInterstitialAdFetchFailed();
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed",true);
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
-                //listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, null); // The ad could not be displayed
+                //super.onInterstitialAdFetchFailed();
             }
 
             @Override
             public void onInterstitialAdDisplayed() {
-                Log.d(TEST_LOG, "Interstitial ad fetch displayed");
-                super.onInterstitialAdDisplayed();
+                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed",true);
                 listener.onAdShowSuccess();
+                //super.onInterstitialAdDisplayed();
             }
 
             @Override
             public void onInterstitialAdClosed() {
-                Log.d(TEST_LOG, "Interstitial ad closed");
-                super.onInterstitialAdClosed();
+                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed",true);
                 listener.onAdClosed();
                 interstitialReady = false;
+                //super.onInterstitialAdClosed();
             }
 
             @Override
             public String onVersionExchange(String sdkVersion) {
-                Log.d(TEST_LOG, "Version exchange triggered");
+                TempoUtils.Say("TempoAdapter: onVersionExchange (interstitial, SDK=" + sdkVersion + ", Adapter=" + TempoCustomAdapter.ADAPTER_VERSION + ")");
                 TempoCustomAdapter.dynSdkVersion = sdkVersion;
                 return TempoCustomAdapter.ADAPTER_VERSION;
             }
 
             @Override
             public String onGetAdapterType() {
-                Log.d(TEST_LOG, "Adapter Type requested (I)");
+                TempoUtils.Say("TempoAdapter: onGetAdapterType (Interstitial, Type: " + TempoCustomAdapter.ADAPTER_TYPE + ")");
                 return TempoCustomAdapter.ADAPTER_TYPE;
             }
         };
@@ -125,7 +120,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public void showAd(AdData adData, InterstitialAdListener ironSourceAdlistener) {
-        Log.d(TEST_LOG, "(I) ShowAd called (" + interstitialReady + ")");//: " + adData.getConfiguration());
+        TempoUtils.Say("TempoAdapter: showAd (i)", true);
         if (interstitialReady)  {
             interstitialView.showAd();
         } else {
@@ -135,7 +130,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public boolean isAdAvailable(AdData adData) {
-        //sLog.d(TEST_LOG, "IsAdAvailable called: " + interstitialReady);
+        TempoUtils.Say("TempoAdapter: isAdAvailable (i)", false);
         return interstitialReady;
     }
 }
