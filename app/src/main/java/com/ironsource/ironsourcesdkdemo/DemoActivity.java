@@ -4,6 +4,7 @@ package com.ironsource.ironsourcesdkdemo;
 import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -15,7 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+
 
 import com.ironsource.mediationsdk.ISBannerSize;
 import com.ironsource.mediationsdk.IronSource;
@@ -123,7 +124,6 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 }
             }
         });
-
 
         // UI dressings
         TextView versionTV = (TextView) findViewById(R.id.version_txt);
