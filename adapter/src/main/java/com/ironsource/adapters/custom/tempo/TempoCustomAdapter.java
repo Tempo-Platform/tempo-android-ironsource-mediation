@@ -19,8 +19,8 @@ import com.tempoplatform.ads.TempoUtils;
 public class TempoCustomAdapter extends BaseAdapter {
 
     // Version references
-    public static String dynSdkVersion = "1.0.4";
-    public static final String ADAPTER_VERSION = "1.0.5"; // current 1.0.5
+    public static String dynSdkVersion = "1.0.8";
+    public static final String ADAPTER_VERSION = "1.0.8"; // current 1.0.8
     public static final String ADAPTER_TYPE = "IRONSOURCE";
 
     // Log tag for debugging
