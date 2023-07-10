@@ -23,12 +23,12 @@ android {
 }
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:7.3.1.1'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.0.6'
+    implementation 'androidx.annotation:annotation:[1,2)'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.0.8'
 //    api (files("libs/tempo-android-sdk-release.aar"))
+//    api 'com.google.code.gson:gson:2.10.1'
 //    implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'
 //    implementation 'com.google.android.gms:play-services-basement:[17.6,18)'
-    implementation 'androidx.annotation:annotation:[1,2)'
-//    api 'com.google.code.gson:gson:2.10.1'
 }
 
 apply from: 'publish-remote.gradle'

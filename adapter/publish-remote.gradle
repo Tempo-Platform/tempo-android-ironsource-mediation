@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.0.6'
+    PUBLISH_VERSION = '1.0.8'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
@@ -34,7 +34,6 @@ afterEvaluate {
                 System.out.println("PUBLISH_GROUP_ID\t\t: " + PUBLISH_GROUP_ID)
                 System.out.println("PUBLISH_ARTIFACT_ID\t\t: " + PUBLISH_ARTIFACT_ID)
                 System.out.println("PUBLISH_VERSION\t\t\t: " + PUBLISH_VERSION)
-
 
                 if (project.plugins.findPlugin("com.android.library")) {
 

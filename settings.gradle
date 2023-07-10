@@ -17,6 +17,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tempo IronSource Mediation Adapter"
+rootProject.name = "Tempo IronSource Adapter"
 include ':adapter'
 include ':app'
