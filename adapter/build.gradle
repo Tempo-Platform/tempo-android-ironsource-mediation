@@ -24,7 +24,7 @@ android {
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:7.3.1.1'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.0.8'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.1.0'
 //    api (files("libs/tempo-android-sdk-release.aar"))
 //    api 'com.google.code.gson:gson:2.10.1'
 //    implementation 'com.google.android.gms:play-services-ads-identifier:[17.1,18)'

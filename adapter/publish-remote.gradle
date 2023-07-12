@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.0.8'
+    PUBLISH_VERSION = '1.1.0'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
@@ -75,7 +75,6 @@ afterEvaluate {
         }
     }
 }
-System.out.println("\n------------2  -----------")
 
 // Get the signing details from the root project and sign the artifact.
 signing {
