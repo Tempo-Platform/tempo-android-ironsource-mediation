@@ -62,9 +62,9 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 String location = null; // TODO: Currently blank
                 String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
 
-                com.tempoplatform.ads.RewardedAdListener tempoListener = new com.tempoplatform.ads.RewardedAdListener() {
+                com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
                         @Override
-                        public void onRewardedAdFetchSucceeded() {
+                        public void onTempoAdFetchSucceeded() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded",true);
                                 listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 rewardedReady = true;
@@ -72,23 +72,23 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         }
 
                         @Override
-                        public void onRewardedAdFetchFailed() {
+                        public void onTempoAdFetchFailed() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed",true);
-                                super.onRewardedAdFetchFailed();
+                                super.onTempoAdFetchFailed();
                                 int adapterErrorCode = ADAPTER_ERROR_INTERNAL;
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                                 //super.onRewardedAdFetchFailed();
                         }
 
                         @Override
-                        public void onRewardedAdDisplayed() {
+                        public void onTempoAdDisplayed() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed",true);
                                 listener.onAdShowSuccess();
                                 //super.onRewardedAdDisplayed();
                         }
 
                         @Override
-                        public void onRewardedAdClosed() {
+                        public void onTempoAdClosed() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdClosed",true);
                                 listener.onAdClosed();
                                 rewardedReady = false;

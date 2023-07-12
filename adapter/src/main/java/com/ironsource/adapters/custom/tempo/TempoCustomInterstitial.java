@@ -62,9 +62,9 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         String location = null; // TODO: Currently blank
         String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
 
-        com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
+        com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
             @Override
-            public void onInterstitialAdFetchSucceeded() {
+            public void onTempoAdFetchSucceeded() {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded",true);
                 listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
                 interstitialReady = true;
@@ -72,21 +72,21 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             }
 
             @Override
-            public void onInterstitialAdFetchFailed() {
+            public void onTempoAdFetchFailed() {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed",true);
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onInterstitialAdFetchFailed();
             }
 
             @Override
-            public void onInterstitialAdDisplayed() {
+            public void onTempoAdDisplayed() {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed",true);
                 listener.onAdShowSuccess();
                 //super.onInterstitialAdDisplayed();
             }
 
             @Override
-            public void onInterstitialAdClosed() {
+            public void onTempoAdClosed() {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdClosed",true);
                 listener.onAdClosed();
                 interstitialReady = false;
