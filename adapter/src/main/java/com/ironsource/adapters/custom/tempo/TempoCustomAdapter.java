@@ -1,9 +1,6 @@
 package com.ironsource.adapters.custom.tempo;
 
-import static com.tempoplatform.ads.Constants.TEST_LOG;
-
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
@@ -12,22 +9,14 @@ import androidx.annotation.Nullable;
 import com.ironsource.mediationsdk.adunit.adapter.BaseAdapter;
 import com.ironsource.mediationsdk.adunit.adapter.listener.NetworkInitializationListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
+import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.TempoUtils;
 
 @Keep
 @SuppressWarnings("unused")
 public class TempoCustomAdapter extends BaseAdapter {
 
-    // Version references
-    public static String dynSdkVersion = "1.1.0";
-    public static final String ADAPTER_VERSION = "1.1.0"; // current 1.1.0
-    public static final String ADAPTER_TYPE = "IRONSOURCE";
-
-    // Log tag for debugging
-    //private static final String LOG_TAG = TempoCustomAdapter.class.getSimpleName();
-
     public TempoCustomAdapter() {
-        //Log.d(TEST_LOG, "TempoCustomAdapter.TempoCustomAdapter created!");
         TempoUtils.Say("TempoAdapter: created", true);
     }
 
@@ -48,13 +37,13 @@ public class TempoCustomAdapter extends BaseAdapter {
 
     @Override
     public String getNetworkSDKVersion() {
-        return dynSdkVersion;
+        return Constants.SDK_VERSION;
     }
 
     @NonNull
     @Override
     public String getAdapterVersion() {
-        return ADAPTER_VERSION;
+        return AdapterConstants.ADAPTER_VERSION;
     }
 
 }

@@ -13,6 +13,7 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
+import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.RewardedView;
 import com.tempoplatform.ads.TempoUtils;
 
@@ -39,7 +40,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 String appId = "";
                 JSONObject obj = new JSONObject(adData.getConfiguration());
                 try {
-                        appId = obj.getString("appId");
+                        appId = obj.getString(AdapterConstants.PARAM_APP_ID);
                 } catch (JSONException e) {
                         TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
                 }
@@ -48,7 +49,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 String cpmFloorStr;
                 try {
                         // Confirm string is legit decimal value
-                        cpmFloorStr = obj.getString("cpmFloor");
+                        cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
                         double decimalNumber = Double.parseDouble(cpmFloorStr);
                         cpmFloorStr = String.valueOf(decimalNumber);
                         TempoUtils.Say("TempoAdapter: CPMFloor=" + cpmFloorStr, true);
@@ -96,16 +97,15 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         }
 
                         @Override
-                        public String onVersionExchange(String sdkVersion) {
-                                TempoUtils.Say("TempoAdapter: onVersionExchange (rewarded, SDK=" + sdkVersion + ", Adapter=" + TempoCustomAdapter.ADAPTER_VERSION + ")");
-                                TempoCustomAdapter.dynSdkVersion = sdkVersion;
-                                return TempoCustomAdapter.ADAPTER_VERSION;
+                        public String getTempoAdapterVersion() {
+                                TempoUtils.Say("TempoAdapter: getTempoAdapterVersion (rewarded, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
+                                return AdapterConstants.ADAPTER_VERSION;
                         }
 
                         @Override
-                        public String onGetAdapterType() {
-                                TempoUtils.Say("TempoAdapter: onGetAdapterType (rewarded, Type: " + TempoCustomAdapter.ADAPTER_TYPE + ")");
-                                return TempoCustomAdapter.ADAPTER_TYPE;
+                        public String getTempoAdapterType() {
+                                TempoUtils.Say("TempoAdapter: getTempoAdapterType (rewarded, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
+                                return AdapterConstants.ADAPTER_TYPE;
                         }
                 };
 
