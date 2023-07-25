@@ -52,7 +52,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             cpmFloorStr = String.valueOf(decimalNumber);
-            TempoUtils.Say("TempoAdapter: CPMFloor=" + cpmFloorStr, true);
+            TempoUtils.Say("TempoAdapter: loadAd (i) CPMFloor=" + cpmFloorStr, true);
         } catch (JSONException e) {
             TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
             cpmFloorStr = "0";
@@ -66,7 +66,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
             @Override
             public void onTempoAdFetchSucceeded() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded",true);
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded");
                 listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
                 interstitialReady = true;
                 //super.onInterstitialAdFetchSucceeded();
@@ -74,21 +74,21 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
             @Override
             public void onTempoAdFetchFailed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed",true);
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed");
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onInterstitialAdFetchFailed();
             }
 
             @Override
             public void onTempoAdDisplayed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed",true);
+                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed");
                 listener.onAdShowSuccess();
                 //super.onInterstitialAdDisplayed();
             }
 
             @Override
             public void onTempoAdClosed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed",true);
+                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed");
                 listener.onAdClosed();
                 interstitialReady = false;
                 //super.onInterstitialAdClosed();

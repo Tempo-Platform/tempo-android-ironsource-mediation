@@ -34,8 +34,6 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void loadAd(AdData adData, Activity activity, RewardedVideoAdListener listener) {
-                TempoUtils.Say("TempoAdapter: loadAd (r)", true);
-
                 // Get App ID
                 String appId = "";
                 JSONObject obj = new JSONObject(adData.getConfiguration());
@@ -52,7 +50,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
                         double decimalNumber = Double.parseDouble(cpmFloorStr);
                         cpmFloorStr = String.valueOf(decimalNumber);
-                        TempoUtils.Say("TempoAdapter: CPMFloor=" + cpmFloorStr, true);
+                        TempoUtils.Say("TempoAdapter: loadAd (r) CPMFloor=" + cpmFloorStr, true);
                 } catch (JSONException e) {
                         TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
                         cpmFloorStr = "0";
@@ -66,7 +64,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
                         @Override
                         public void onTempoAdFetchSucceeded() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded",true);
+                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded");
                                 listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 rewardedReady = true;
                                 //super.onRewardedAdFetchSucceeded();
@@ -74,7 +72,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
                         @Override
                         public void onTempoAdFetchFailed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed",true);
+                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed");
                                 super.onTempoAdFetchFailed();
                                 int adapterErrorCode = ADAPTER_ERROR_INTERNAL;
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
@@ -83,14 +81,14 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
                         @Override
                         public void onTempoAdDisplayed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed",true);
+                                TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed");
                                 listener.onAdShowSuccess();
                                 //super.onRewardedAdDisplayed();
                         }
 
                         @Override
                         public void onTempoAdClosed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdClosed",true);
+                                TempoUtils.Say("TempoAdapter: onRewardedAdClosed");
                                 listener.onAdClosed();
                                 rewardedReady = false;
                                 //super.onRewardedAdClosed();
