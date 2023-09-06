@@ -14,6 +14,7 @@ import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
+import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.InterstitialView;
 import com.tempoplatform.ads.TempoUtils;
 
@@ -39,7 +40,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         String appId = "";
         JSONObject obj = new JSONObject(adData.getConfiguration());
         try {
-            appId = obj.getString("appId");
+            appId = obj.getString(AdapterConstants.PARAM_APP_ID);
         } catch (JSONException e) {
             TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
         }
@@ -48,10 +49,10 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         String cpmFloorStr;
         try {
             // Confirm string is legit decimal value
-            cpmFloorStr = obj.getString("cpmFloor");
+            cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             cpmFloorStr = String.valueOf(decimalNumber);
-            TempoUtils.Say("TempoAdapter: CPMFloor=" + cpmFloorStr, true);
+            TempoUtils.Say("TempoAdapter: loadAd (i) CPMFloor=" + cpmFloorStr, true);
         } catch (JSONException e) {
             TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
             cpmFloorStr = "0";
@@ -62,48 +63,47 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         String location = null; // TODO: Currently blank
         String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
 
-        com.tempoplatform.ads.InterstitialAdListener tempoListener = new com.tempoplatform.ads.InterstitialAdListener() {
+        com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
             @Override
-            public void onInterstitialAdFetchSucceeded() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded",true);
+            public void onTempoAdFetchSucceeded() {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded");
                 listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
                 interstitialReady = true;
                 //super.onInterstitialAdFetchSucceeded();
             }
 
             @Override
-            public void onInterstitialAdFetchFailed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed",true);
+            public void onTempoAdFetchFailed() {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed");
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onInterstitialAdFetchFailed();
             }
 
             @Override
-            public void onInterstitialAdDisplayed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed",true);
+            public void onTempoAdDisplayed() {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed");
                 listener.onAdShowSuccess();
                 //super.onInterstitialAdDisplayed();
             }
 
             @Override
-            public void onInterstitialAdClosed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed",true);
+            public void onTempoAdClosed() {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed");
                 listener.onAdClosed();
                 interstitialReady = false;
                 //super.onInterstitialAdClosed();
             }
 
             @Override
-            public String onVersionExchange(String sdkVersion) {
-                TempoUtils.Say("TempoAdapter: onVersionExchange (interstitial, SDK=" + sdkVersion + ", Adapter=" + TempoCustomAdapter.ADAPTER_VERSION + ")");
-                TempoCustomAdapter.dynSdkVersion = sdkVersion;
-                return TempoCustomAdapter.ADAPTER_VERSION;
+            public String getTempoAdapterVersion() {
+                TempoUtils.Say("TempoAdapter: getTempoAdapterVersion (interstitial, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
+                return AdapterConstants.ADAPTER_VERSION;
             }
 
             @Override
-            public String onGetAdapterType() {
-                TempoUtils.Say("TempoAdapter: onGetAdapterType (Interstitial, Type: " + TempoCustomAdapter.ADAPTER_TYPE + ")");
-                return TempoCustomAdapter.ADAPTER_TYPE;
+            public String getTempoAdapterType() {
+                TempoUtils.Say("TempoAdapter: getTempoAdapterType (interstitial, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
+                return AdapterConstants.ADAPTER_TYPE;
             }
         };
 
