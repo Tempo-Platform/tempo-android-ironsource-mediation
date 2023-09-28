@@ -17,7 +17,7 @@ import com.tempoplatform.ads.TempoUtils;
 public class TempoCustomAdapter extends BaseAdapter {
 
     public TempoCustomAdapter() {
-        TempoUtils.Say("TempoAdapter: created", true);
+        TempoUtils.Say("TempoAdapter: created");
     }
 
     @Override

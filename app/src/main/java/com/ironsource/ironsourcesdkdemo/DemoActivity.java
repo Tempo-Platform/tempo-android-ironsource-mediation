@@ -45,7 +45,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
     private final String TAG = "DemoActivity";
 
     // From IronSource portal
-    private final String APP_KEY_PROD = "1a46bef35";
+    private final String APP_KEY_PROD = "1bcfe2ae5";
     private final String APP_KEY_DEV = "1a6ad0b75";
 
     private Button mInterstitialLoadButton;
@@ -234,7 +234,6 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 Log.e(TEST_LOG, "*********** onAdShowFailed (LevelPlay - Interstitial)  [" + error + "] ********** ");
                 handleShowInterstitialButtonState(false);
             }
-
 
 
             // Invoked when end user clicked on the interstitial ad
