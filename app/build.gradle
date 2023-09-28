@@ -27,7 +27,9 @@ android {
 dependencies {
 
     implementation 'com.ironsource.sdk:mediationsdk:7.3.1.1'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.1.0'
+    //implementation 'io.github.tempo-platform:tempo-android-sdk:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+api (files("libs/tempo-android-sdk-release.aar"))
 
 //    implementation project(':adapter')
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])

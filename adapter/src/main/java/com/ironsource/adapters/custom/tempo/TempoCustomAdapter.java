@@ -1,6 +1,6 @@
 package com.ironsource.adapters.custom.tempo;
 
-import static com.tempoplatform.ads.Constants.TEST_LOG;
+import  static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.content.Context;
 import android.util.Log;

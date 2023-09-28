@@ -1,6 +1,7 @@
 
 package com.ironsource.ironsourcesdkdemo;
 
+import static com.tempoplatform.ads.Constants.*;
 import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.app.Activity;
@@ -37,6 +38,7 @@ import com.ironsource.mediationsdk.sdk.OfferwallListener;
 import com.ironsource.mediationsdk.sdk.RewardedVideoListener;
 import com.ironsource.mediationsdk.utils.IronSourceUtils;
 import com.tempoplatform.ads.Constants;
+import com.tempoplatform.ads.TempoTesting;
 import com.tempoplatform.ads.TempoUtils;
 
 
@@ -46,7 +48,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
 
     // From IronSource portal
     private final String APP_KEY_PROD = "1a46bef35";
-    private final String APP_KEY_DEV = "1a6ad0b75";
+    private final String APP_KEY_DEV = "1bcfe2ae5";//"1a6ad0b75";
 
     private Button mInterstitialLoadButton;
     private Button mInterstitialShowButton;
@@ -481,10 +483,12 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      * Returns appropriate key determined by TempoSDK environment
      */
     private String getAppKey() {
-        if(Constants.IS_PROD) {
+        if(IS_PROD) {
+            TempoUtils.Say("PROD: using key #" + APP_KEY_PROD, true);
             return APP_KEY_PROD;
         }
         else {
+            TempoUtils.Say("DEV: using key #" + APP_KEY_DEV, true);
             return APP_KEY_DEV;
         }
     }
