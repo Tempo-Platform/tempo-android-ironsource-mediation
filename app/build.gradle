@@ -30,7 +30,7 @@ dependencies {
     implementation project(':adapter')
 
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.2.0'
-    //implementation(name:'tempo-android-sdk-release', ext:'aar')
+    //implementation(name:'tempo-android-sdk-release_prod_121_debug', ext:'aar')
     implementation 'com.stripe:payments-core:17.2.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'commons-net:commons-net:3.9.0'

@@ -29,7 +29,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         public TempoCustomRewardedVideo(NetworkSettings networkSettings) {
                 super(networkSettings);
-                TempoUtils.Say("TempoAdapter: init rewarded");
+                //TempoUtils.Say("TempoAdapter: init rewarded");
         }
 
         @Override
@@ -44,18 +44,18 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 }
 
                 // Get CPM Floor
-                String cpmFloorStr;
+                Float cpmFloor;
                 try {
                         // Confirm string is legit decimal value
-                        cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
+                        String cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
                         double decimalNumber = Double.parseDouble(cpmFloorStr);
                         cpmFloorStr = String.valueOf(decimalNumber);
-                        TempoUtils.Say("TempoAdapter: loadAd (r) CPMFloor=" + cpmFloorStr, true);
+                        cpmFloor = Float.parseFloat(cpmFloorStr);
+                        TempoUtils.Say("TempoAdapter: loadAd (r) CPMFloor=" + cpmFloor, true);
                 } catch (JSONException e) {
                         TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
-                        cpmFloorStr = "0";
+                        cpmFloor = 0.0F;
                 }
-                Float cpmFloor = cpmFloorStr != null ? Float.parseFloat(cpmFloorStr) : 0.0F;
 
                 // Other properties must to be determined
                 String location = null; // TODO: Currently blank
@@ -82,7 +82,8 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         @Override
                         public void onTempoAdDisplayed() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed");
-                                listener.onAdShowSuccess();
+                                listener.onAdOpened();
+                                listener.onAdRewarded();
                                 //super.onRewardedAdDisplayed();
                         }
 
@@ -108,12 +109,13 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 };
 
                 final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
+                Float finalCpmFloor = cpmFloor;
                 activity.runOnUiThread(() -> {
                         rewardedView = new RewardedView(finalAppId, activity);
                         if (location != null) {
-                                rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId, location);
+                                rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId, location);
                         } else {
-                                rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
+                                rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
                         }
                 });
         }
