@@ -71,9 +71,9 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         }
 
                         @Override
-                        public void onTempoAdFetchFailed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed");
-                                super.onTempoAdFetchFailed();
+                        public void onTempoAdFetchFailed(String reason) {
+                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed: " + reason);
+                                super.onTempoAdFetchFailed(reason);
                                 int adapterErrorCode = ADAPTER_ERROR_INTERNAL;
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                                 //super.onRewardedAdFetchFailed();
@@ -85,6 +85,12 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                                 listener.onAdOpened();
                                 listener.onAdRewarded();
                                 //super.onRewardedAdDisplayed();
+                        }
+
+                        @Override
+                        public void onTempoAdShowFailed(String reason) {
+                                TempoUtils.Say("TempoAdapter: onRewardedAdShowFailed: " + reason);
+                                listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
                         }
 
                         @Override
