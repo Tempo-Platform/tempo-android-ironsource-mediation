@@ -13,6 +13,7 @@ import com.ironsource.mediationsdk.adunit.adapter.listener.InterstitialAdListene
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
+import com.ironsource.mediationsdk.logger.IronSourceError;
 import com.ironsource.mediationsdk.model.NetworkSettings;
 import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.InterstitialView;
@@ -73,8 +74,8 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             }
 
             @Override
-            public void onTempoAdFetchFailed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed");
+            public void onTempoAdFetchFailed(String reason) {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed: " + reason);
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onInterstitialAdFetchFailed();
             }
@@ -85,6 +86,14 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 listener.onAdOpened();
                 //super.onInterstitialAdDisplayed();
             }
+
+
+            @Override
+            public void onTempoAdShowFailed(String reason) {
+                TempoUtils.Say("TempoAdapter: onInterstitialAdShowFailed: " + reason);
+                listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
+            }
+
 
             @Override
             public void onTempoAdClosed() {
