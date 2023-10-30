@@ -61,8 +61,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         }
 
         // Other properties must to be determined
-        String location = null; // TODO: Currently blank
-        String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
+        String placementId = ""; // Purely placer, given by customer at time of ShowAd, cannot catch
 
         com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
             @Override
@@ -87,13 +86,11 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 //super.onInterstitialAdDisplayed();
             }
 
-
             @Override
             public void onTempoAdShowFailed(String reason) {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdShowFailed: " + reason);
                 listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
             }
-
 
             @Override
             public void onTempoAdClosed() {
@@ -120,11 +117,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         Float finalCpmFloor = cpmFloor;
         activity.runOnUiThread(() -> {
             interstitialView = new InterstitialView(finalAppId, activity);
-            if (location != null) {
-                interstitialView.loadAd(activity, tempoListener, finalCpmFloor, placementId, location);
-            } else {
-                interstitialView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
-            }
+            interstitialView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
         });
     }
 

@@ -29,7 +29,6 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         public TempoCustomRewardedVideo(NetworkSettings networkSettings) {
                 super(networkSettings);
-                //TempoUtils.Say("TempoAdapter: init rewarded");
         }
 
         @Override
@@ -57,9 +56,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         cpmFloor = 0.0F;
                 }
 
-                // Other properties must to be determined
-                String location = null; // TODO: Currently blank
-                String placementId = ""; // TODO: Get PlacementID - given by customer at time of ShowAd. Have contacted IronSource.
+                String placementId = ""; // Purely placer, given by customer at time of ShowAd, cannot catch
 
                 com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
                         @Override
@@ -118,11 +115,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 Float finalCpmFloor = cpmFloor;
                 activity.runOnUiThread(() -> {
                         rewardedView = new RewardedView(finalAppId, activity);
-                        if (location != null) {
-                                rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId, location);
-                        } else {
-                                rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
-                        }
+                        rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
                 });
         }
 

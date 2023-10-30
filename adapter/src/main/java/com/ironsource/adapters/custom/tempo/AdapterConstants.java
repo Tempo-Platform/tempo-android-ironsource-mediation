@@ -1,7 +1,7 @@
 package com.ironsource.adapters.custom.tempo;
 
 public class AdapterConstants {
-    public static final String ADAPTER_VERSION = "1.3.2-rc.0";
+    public static final String ADAPTER_VERSION = "1.3.2-rc.1";
     public static final String ADAPTER_TYPE = "IRONSOURCE";
     public static final String PARAM_CPM_FLR = "cpmFloor";
     public static final String PARAM_APP_ID = "appId";
