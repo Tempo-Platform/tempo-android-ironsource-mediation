@@ -26,7 +26,7 @@ android {
 
 dependencies {
 
-    implementation 'com.ironsource.sdk:mediationsdk:7.3.1.1'
+    implementation 'com.ironsource.sdk:mediationsdk:[7.5,8.0)'
     implementation project(':adapter')
 
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.0'
