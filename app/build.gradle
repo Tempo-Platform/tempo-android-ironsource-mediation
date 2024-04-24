@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.ironsource.adapters.custom.tempo.demo"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdk 34
         versionCode 1
         versionName "1"
     }
@@ -32,7 +32,7 @@ dependencies {
 
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.2'
     //mplementation(name:'tempo-android-sdk-debug_1_4_1-rc_1', ext:'aar')
-    implementation 'com.stripe:payments-core:17.2.0'
+    implementation 'com.stripe:payments-core:20.41.1'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'commons-net:commons-net:3.10.0'
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'
