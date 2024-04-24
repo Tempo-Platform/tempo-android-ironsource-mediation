@@ -37,7 +37,7 @@ afterEvaluate {
 
                 if (project.plugins.findPlugin("com.android.library")) {
 
-                    from components.release
+                    from components.findByName('release')
                     artifact androidSourcesJar
 
                     // Mostly self-explanatory metadata

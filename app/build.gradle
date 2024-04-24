@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.ironsource.adapters.custom.tempo.demo"
@@ -22,6 +22,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.ironsource.ironsourcesdkdemo'
 }
 
 dependencies {
@@ -29,12 +30,12 @@ dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7.5,8.0)'
     implementation project(':adapter')
 
-    //implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.0'
-    implementation(name:'tempo-android-sdk-debug_1_4_1-rc_1', ext:'aar')
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.2'
+    //mplementation(name:'tempo-android-sdk-debug_1_4_1-rc_1', ext:'aar')
     implementation 'com.stripe:payments-core:17.2.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-    implementation 'commons-net:commons-net:3.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'commons-net:commons-net:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
 }
