@@ -1,48 +1,35 @@
 
-package com.ironsource.ironsourcesdkdemo;
+package com.ironsource.ironsourceui;
 
 import static com.tempoplatform.ads.Constants.TEST_LOG;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-
-import com.ironsource.mediationsdk.ISBannerSize;
+import com.ironsource.ironsourceui.R;
 import com.ironsource.mediationsdk.IronSource;
-import com.ironsource.mediationsdk.IronSourceBannerLayout;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo;
 import com.ironsource.mediationsdk.impressionData.ImpressionData;
 import com.ironsource.mediationsdk.impressionData.ImpressionDataListener;
 import com.ironsource.mediationsdk.integration.IntegrationHelper;
 import com.ironsource.mediationsdk.logger.IronSourceError;
-import com.ironsource.mediationsdk.model.InterstitialPlacement;
 import com.ironsource.mediationsdk.model.Placement;
-import com.ironsource.mediationsdk.sdk.BannerListener;
-import com.ironsource.mediationsdk.sdk.InitializationListener;
-import com.ironsource.mediationsdk.sdk.InterstitialListener;
 import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener;
 import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener;
-import com.ironsource.mediationsdk.sdk.OfferwallListener;
-import com.ironsource.mediationsdk.sdk.RewardedVideoListener;
 import com.ironsource.mediationsdk.utils.IronSourceUtils;
 import com.tempoplatform.ads.Constants;
-import com.tempoplatform.ads.TempoUtils;
 
 
-public class DemoActivity extends Activity implements ImpressionDataListener {
+public class IronSourceDemo extends Activity implements ImpressionDataListener {
 
-    private final String TAG = "DemoActivity";
+    private final String TAG = "IronSourceDemo";
 
     // From IronSource portal
     private final String APP_KEY_PROD = "1bcfe2ae5";
@@ -57,7 +44,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo);
+        setContentView(R.layout.activity_web_view);
         Log.e(TEST_LOG, "onCreate");
 
         //The integrationHelper is used to validate the integration. Remove the integrationHelper before going live!
@@ -77,7 +64,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
     private void initUIElements() {
 
         // LOAD Rewarded Button(s)
-        mRewardedLoadButton = (Button) findViewById(R.id.rw_button_1);
+        mRewardedLoadButton = findViewById(R.id.rw_button_2);
         mRewardedLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -499,7 +486,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
     }
 
     public void showRewardDialog(Placement placement) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(DemoActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(IronSourceDemo.this);
         builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DemoActivity">
+    tools:context="com.ironsource.ironsourceui.IronSourceDemo">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -53,11 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/is_button_2"
             android:layout_alignStart="@+id/is_button_1"
-            android:layout_alignLeft="@+id/ow_button"
             android:layout_alignEnd="@+id/is_button_2"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="-19dp"
             android:layout_marginTop="60dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginEnd="9dp"
             android:background="@drawable/ironsource_button_shape"
             android:text="Initializing Rewarded" />
 
