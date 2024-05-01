@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.ironsource.ironsourceui.R;
 import com.ironsource.mediationsdk.IronSource;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo;
 import com.ironsource.mediationsdk.impressionData.ImpressionData;
@@ -44,7 +43,7 @@ public class IronSourceDemo extends Activity implements ImpressionDataListener {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
+        setContentView(R.layout.activity_demo);
         Log.e(TEST_LOG, "onCreate");
 
         //The integrationHelper is used to validate the integration. Remove the integrationHelper before going live!
@@ -64,28 +63,44 @@ public class IronSourceDemo extends Activity implements ImpressionDataListener {
     private void initUIElements() {
 
         // LOAD Rewarded Button(s)
-        mRewardedLoadButton = findViewById(R.id.rw_button_2);
-        mRewardedLoadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e(TEST_LOG, "LoadRewarded clicked: ");
-                IronSource.loadRewardedVideo();
-            }
-        });
+        mRewardedLoadButton = (Button)findViewById(R.id.rw_button_1);
+
+        if(mRewardedLoadButton == null) {
+            Log.e(TEST_LOG, "=================================> mRewardedLoadButton null!: ");
+        }
+        else{
+
+            mRewardedLoadButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e(TEST_LOG, "LoadRewarded clicked: ");
+                    IronSource.loadRewardedVideo();
+                }
+            });
+        }
+
+
+
         // SHOW Interstitial Button
-        mRewardedShowButton = (Button) findViewById(R.id.rw_button_2);
-        mRewardedShowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e(TEST_LOG, "ShowRewarded clicked: " + IronSource.isRewardedVideoAvailable());
-                if (IronSource.isRewardedVideoAvailable()) {
-                    IronSource.showRewardedVideo("SJB2");
+        mRewardedShowButton = (Button)findViewById(R.id.rw_button_2);
+
+        if(mRewardedShowButton == null) {
+            Log.e(TEST_LOG, "=================================> mRewardedShowButton null!: ");
+        }
+        else{
+            mRewardedShowButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e(TEST_LOG, "ShowRewarded clicked: " + IronSource.isRewardedVideoAvailable());
+                    if (IronSource.isRewardedVideoAvailable()) {
+                        IronSource.showRewardedVideo("SJB2");
+                    }
+                    else{
+                        Log.e(TEST_LOG, "Rewarded NOT AVAILABLE!");
+                    }
                 }
-                else{
-                    Log.e(TEST_LOG, "Rewarded NOT AVAILABLE!");
-                }
-            }
-        });
+            });
+        }
 
 
         // LOAD Interstitial Button
