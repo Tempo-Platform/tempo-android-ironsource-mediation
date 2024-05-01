@@ -22,11 +22,28 @@ android {
     }
 }
 dependencies {
+    constraints {
+
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+
+        }
+
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+
+        }
+    }
+
     implementation 'com.ironsource.sdk:mediationsdk:[7.5,)'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.10'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.11'
     //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
 }
+
+
 
 apply from: 'publish-remote.gradle'
 
