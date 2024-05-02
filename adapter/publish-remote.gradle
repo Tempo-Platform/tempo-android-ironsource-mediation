@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.4.1-rc.18'
+    PUBLISH_VERSION = '1.4.1-rc.20'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
