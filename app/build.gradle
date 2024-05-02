@@ -29,7 +29,7 @@ dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7.5,)'
     implementation project(':adapter')
 
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.11'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.17'
     //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
     implementation 'com.stripe:payments-core:17.2.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
