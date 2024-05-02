@@ -25,7 +25,12 @@ android {
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7.5,)'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.22'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.23'
+//    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+//    implementation("org.jetbrains.kotlin:kotlin-stdlib:[1.8, 2]"){
+//        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+//        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+//    }
     //implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
     //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
 }
