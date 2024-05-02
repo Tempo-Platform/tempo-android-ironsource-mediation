@@ -29,12 +29,12 @@ dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7.5,)'
     implementation project(':adapter')
 
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.17'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.22'
     //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
-    implementation 'com.stripe:payments-core:17.2.0'
+    implementation 'com.stripe:payments-core:[17,18]'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-    implementation 'commons-net:commons-net:3.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'commons-net:commons-net:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
 }
