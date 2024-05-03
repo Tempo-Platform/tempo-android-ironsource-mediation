@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.4.2'
+    PUBLISH_VERSION = '1.5.0'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
@@ -31,9 +31,9 @@ afterEvaluate {
                 artifactId PUBLISH_ARTIFACT_ID
                 version PUBLISH_VERSION
 
-                System.out.println("PUBLISH_GROUP_ID\t\t: " + PUBLISH_GROUP_ID)
-                System.out.println("PUBLISH_ARTIFACT_ID\t\t: " + PUBLISH_ARTIFACT_ID)
-                System.out.println("PUBLISH_VERSION\t\t\t: " + PUBLISH_VERSION)
+                System.out.println("PUBLISH_GROUP_ID\t\t: " + groupId)
+                System.out.println("PUBLISH_ARTIFACT_ID\t\t: " + artifactId)
+                System.out.println("PUBLISH_VERSION\t\t\t: " + version)
 
                 if (project.plugins.findPlugin("com.android.library")) {
 
@@ -42,7 +42,7 @@ afterEvaluate {
 
                     // Mostly self-explanatory metadata
                     pom {
-                        name = PUBLISH_ARTIFACT_ID
+                        name = artifactId
                         description = "Tempo Mediation Adapter for ironSource"
                         url = 'https://github.com/Tempo-Platform/tempo-android-ironsource-mediation'
                         licenses {

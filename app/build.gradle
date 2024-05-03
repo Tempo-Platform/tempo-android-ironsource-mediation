@@ -29,10 +29,10 @@ dependencies {
     // Tempo
     implementation project(':adapter')
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.2'
-    //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
+    //implementation(name:'tempo-android-sdk-1_4_2', ext:'aar')
 
     // External
-    implementation 'com.ironsource.sdk:mediationsdk:[7.5,)'
+    implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'commons-net:commons-net:3.10.0'
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'
