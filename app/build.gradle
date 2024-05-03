@@ -28,7 +28,7 @@ dependencies {
 
     // Tempo
     implementation project(':adapter')
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.1-rc.25'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.2'
     //implementation(name:'tempo-android-sdk_1.3.2-rc.3', ext:'aar')
 
     // External
