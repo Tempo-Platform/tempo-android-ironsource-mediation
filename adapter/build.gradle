@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
     implementation 'androidx.annotation:annotation:[1,2)'
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.46'
-  //  implementation(name:'tempo-android-sdk-release', ext:'aar')
+    //implementation(name:'tempo-android-sdk-release', ext:'aar')
 }
 
 apply from: 'publish-remote.gradle'

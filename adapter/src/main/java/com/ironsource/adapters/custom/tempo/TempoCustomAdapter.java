@@ -1,14 +1,17 @@
 package com.ironsource.adapters.custom.tempo;
 
+// Generic
 import android.content.Context;
-
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+// ironSource SDK
 import com.ironsource.mediationsdk.adunit.adapter.BaseAdapter;
 import com.ironsource.mediationsdk.adunit.adapter.listener.NetworkInitializationListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
+
+// Tempo SDK
 import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.TempoUtils;
 
