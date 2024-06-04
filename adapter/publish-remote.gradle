@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.5.0'
+    PUBLISH_VERSION = '1.5.1-rc.7'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
@@ -53,9 +53,9 @@ afterEvaluate {
                         }
                         developers {
                             developer {
-                                id = 'omnibaker'
-                                name = 'omnibaker'
-                                email = 'omnibaker@gmail.com'
+                                id = 'development'
+                                name = 'development'
+                                email = 'development@gmail.com'
                             }
                         }
 

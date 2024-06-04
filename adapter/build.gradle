@@ -16,6 +16,13 @@ android {
         buildConfigField 'String', 'VERSION_NAME', "\"$VERSION_NAME\""
     }
 
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -25,7 +32,8 @@ android {
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.2'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.46'
+  //  implementation(name:'tempo-android-sdk-release', ext:'aar')
 }
 
 apply from: 'publish-remote.gradle'
