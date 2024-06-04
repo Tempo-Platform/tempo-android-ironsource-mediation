@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.ironsource.adapters.custom.tempo.demo"
-        minSdkVersion 21
-        targetSdkVersion 33
+        minSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1"
     }
@@ -26,12 +26,12 @@ android {
 
 dependencies {
 
-    // Tempo
-//    implementation project(':adapter')
-//    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.46'
-//    implementation(name:'tempo-android-sdk-release', ext:'aar')
+    // Tempo SDK
+    implementation project(':adapter')
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.49'
+    //implementation(name:'tempo-android-sdk-release', ext:'aar')
 
-    // External
+    // Mediation adapter
     implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
 
     // From adapter, used for builds

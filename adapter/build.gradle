@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.ironsource.adapters.custom.tempo'
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
     }
 
     defaultConfig {
@@ -32,7 +32,7 @@ android {
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.46'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.3-rc.49'
     //implementation(name:'tempo-android-sdk-release', ext:'aar')
 }
 

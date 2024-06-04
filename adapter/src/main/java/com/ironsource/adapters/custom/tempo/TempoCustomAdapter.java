@@ -11,7 +11,7 @@ import com.ironsource.mediationsdk.adunit.adapter.BaseAdapter;
 import com.ironsource.mediationsdk.adunit.adapter.listener.NetworkInitializationListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
 
-// Tempo SDK
+// Tempo SDKs
 import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.TempoUtils;
 
