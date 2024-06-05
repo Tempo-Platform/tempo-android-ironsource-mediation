@@ -5,15 +5,22 @@ plugins {
 
 android {
     namespace 'com.ironsource.adapters.custom.tempo'
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 34
     }
 
     defaultConfig {
         buildConfigField 'String', 'VERSION_NAME', "\"$VERSION_NAME\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 
     compileOptions {
@@ -25,7 +32,8 @@ android {
 dependencies {
     implementation 'com.ironsource.sdk:mediationsdk:[7,9]'
     implementation 'androidx.annotation:annotation:[1,2)'
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.4.2'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.5.0'
+    //implementation(name:'tempo-android-sdk-release', ext:'aar')
 }
 
 apply from: 'publish-remote.gradle'

@@ -1,24 +1,25 @@
 package com.ironsource.adapters.custom.tempo;
 
+// Generic
+import android.app.Activity;
+import androidx.annotation.Keep;
+//import androidx.annotation.NonNull; // TODO: Check why IntAds.loadAd uses @NonNull
+import org.json.JSONException;
+import org.json.JSONObject;
+
+// ironSource
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType.ADAPTER_ERROR_TYPE_NO_FILL;
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors.ADAPTER_ERROR_INTERNAL;
-
-import android.app.Activity;
-
-import androidx.annotation.Keep;
-
 import com.ironsource.mediationsdk.adunit.adapter.BaseRewardedVideo;
 import com.ironsource.mediationsdk.adunit.adapter.listener.RewardedVideoAdListener;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdData;
-import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType;
-import com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrors;
 import com.ironsource.mediationsdk.model.NetworkSettings;
+
+// Tempo SDK
 import com.tempoplatform.ads.Constants;
 import com.tempoplatform.ads.RewardedView;
+import com.tempoplatform.ads.TempoAdListener;
 import com.tempoplatform.ads.TempoUtils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 @Keep
 @SuppressWarnings("unused")
@@ -33,6 +34,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void loadAd(AdData adData, Activity activity, RewardedVideoAdListener listener) {
+
                 // Get App ID
                 String appId = "";
                 JSONObject obj = new JSONObject(adData.getConfiguration());
@@ -56,24 +58,24 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                         cpmFloor = 0.0F;
                 }
 
+                // Other properties must to be determined
                 String placementId = ""; // Purely placer, given by customer at time of ShowAd, cannot catch
 
-                com.tempoplatform.ads.TempoAdListener tempoListener = new com.tempoplatform.ads.TempoAdListener() {
+                TempoAdListener tempoListener = new TempoAdListener() {
                         @Override
                         public void onTempoAdFetchSucceeded() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded");
                                 listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 rewardedReady = true;
-                                //super.onRewardedAdFetchSucceeded();
+                                //super.onTempoAdFetchSucceeded();
+
                         }
 
                         @Override
                         public void onTempoAdFetchFailed(String reason) {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed: " + reason);
-                                super.onTempoAdFetchFailed(reason);
-                                int adapterErrorCode = ADAPTER_ERROR_INTERNAL;
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
-                                //super.onRewardedAdFetchFailed();
+                                //super.onTempoAdFetchFailed(reason);
                         }
 
                         @Override
@@ -81,13 +83,14 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                                 TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed");
                                 listener.onAdOpened();
                                 listener.onAdRewarded();
-                                //super.onRewardedAdDisplayed();
+                                //super.onTempoAdDisplayed();
                         }
 
                         @Override
                         public void onTempoAdShowFailed(String reason) {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdShowFailed: " + reason);
                                 listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
+                                //super.onTempoAdShowFailed(reason);
                         }
 
                         @Override
@@ -95,7 +98,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                                 TempoUtils.Say("TempoAdapter: onRewardedAdClosed");
                                 listener.onAdClosed();
                                 rewardedReady = false;
-                                //super.onRewardedAdClosed();
+                                //super.onTempoAdClosed();
                         }
 
                         @Override

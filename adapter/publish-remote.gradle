@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.tempo-platform'
-    PUBLISH_VERSION = '1.5.0'
+    PUBLISH_VERSION = '1.6.0'
     PUBLISH_ARTIFACT_ID = 'tempo-android-ironsource-adapter'
 }
 
@@ -25,7 +25,6 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
 
-                System.out.println("\n------------ publish-remote.gradle  -----------")
                 // The coordinates of the library, being set from variables that we'll setup later
                 groupId PUBLISH_GROUP_ID
                 artifactId PUBLISH_ARTIFACT_ID
@@ -53,9 +52,9 @@ afterEvaluate {
                         }
                         developers {
                             developer {
-                                id = 'omnibaker'
-                                name = 'omnibaker'
-                                email = 'omnibaker@gmail.com'
+                                id = 'development'
+                                name = 'development'
+                                email = 'development@gmail.com'
                             }
                         }
 
