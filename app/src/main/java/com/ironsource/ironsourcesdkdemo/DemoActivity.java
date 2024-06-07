@@ -1,42 +1,38 @@
 
 package com.ironsource.ironsourcesdkdemo;
 
-import static com.tempoplatform.ads.Constants.TEST_LOG;
+import com.tempoplatform.ads.Constants;
+import com.tempoplatform.ads.TempoUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.content.Context;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 
-
-import com.ironsource.mediationsdk.ISBannerSize;
 import com.ironsource.mediationsdk.IronSource;
-import com.ironsource.mediationsdk.IronSourceBannerLayout;
 import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo;
 import com.ironsource.mediationsdk.impressionData.ImpressionData;
 import com.ironsource.mediationsdk.impressionData.ImpressionDataListener;
 import com.ironsource.mediationsdk.integration.IntegrationHelper;
 import com.ironsource.mediationsdk.logger.IronSourceError;
-import com.ironsource.mediationsdk.model.InterstitialPlacement;
 import com.ironsource.mediationsdk.model.Placement;
-import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener;
-import com.ironsource.mediationsdk.sdk.InitializationListener;
+import com.ironsource.mediationsdk.ISBannerSize;
 import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener;
-import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener;
-import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener;
 import com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener;
 import com.ironsource.mediationsdk.utils.IronSourceUtils;
-import com.tempoplatform.ads.Constants;
-import com.tempoplatform.ads.TempoUtils;
+import com.ironsource.mediationsdk.IronSourceBannerLayout;
+import com.ironsource.mediationsdk.model.InterstitialPlacement;
+import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener;
+import com.ironsource.mediationsdk.sdk.InitializationListener;
 
 
 public class DemoActivity extends Activity implements ImpressionDataListener {
@@ -57,7 +53,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
-        Log.e(TEST_LOG, "onCreate");
+        Log.e(Constants.TEST_LOG, "onCreate");
 
         //The integrationHelper is used to validate the integration. Remove the integrationHelper before going live!
         IntegrationHelper.validateIntegration(this);
@@ -80,7 +76,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         mRewardedLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e(TEST_LOG, "LoadRewarded clicked: ");
+                Log.e(Constants.TEST_LOG, "LoadRewarded clicked: ");
                 IronSource.loadRewardedVideo();
             }
         });
@@ -89,12 +85,12 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         mRewardedShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e(TEST_LOG, "ShowRewarded clicked: " + IronSource.isRewardedVideoAvailable());
+                Log.e(Constants.TEST_LOG, "ShowRewarded clicked: " + IronSource.isRewardedVideoAvailable());
                 if (IronSource.isRewardedVideoAvailable()) {
                     IronSource.showRewardedVideo("SJB2");
                 }
                 else{
-                    Log.e(TEST_LOG, "Rewarded NOT AVAILABLE!");
+                    Log.e(Constants.TEST_LOG, "Rewarded NOT AVAILABLE!");
                 }
             }
         });
@@ -105,7 +101,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         mInterstitialLoadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e(TEST_LOG, "LoadInterstitial clicked");
+                Log.e(Constants.TEST_LOG, "LoadInterstitial clicked");
                 IronSource.loadInterstitial();
             }
         });
@@ -114,12 +110,12 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
         mInterstitialShowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e(TEST_LOG, "ShowInterstitial clicked: " + IronSource.isInterstitialReady());
+                Log.e(Constants.TEST_LOG, "ShowInterstitial clicked: " + IronSource.isInterstitialReady());
                 if (IronSource.isInterstitialReady()) {
                     IronSource.showInterstitial("SJB");
                 }
                 else{
-                    Log.e(TEST_LOG, "Interstitial NOT READY!");
+                    Log.e(Constants.TEST_LOG, "Interstitial NOT READY!");
                 }
             }
         });
@@ -134,7 +130,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      */
     private void startIronSourceInitTask(){
         String advertisingId = IronSource.getAdvertiserId(this);
-        Log.e(TEST_LOG, "startIronSourceInitTask: " + advertisingId + " (advertisingId)");
+        Log.e(Constants.TEST_LOG, "startIronSourceInitTask: " + advertisingId + " (advertisingId)");
         // We're using an advertisingId as the 'userId'
         initIronSource(getAppKey(), advertisingId);
     }
@@ -143,7 +139,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      * Initial IronSource tasks
      */
     private void initIronSource(String appKey, String userId) {
-        Log.e(TEST_LOG, "initIronSource |  AppKey: " + appKey + " | UserId: " + userId);
+        Log.e(Constants.TEST_LOG, "initIronSource |  AppKey: " + appKey + " | UserId: " + userId);
 
         // Initialise listeners
         SetUpLevelPlayInterstitial();
@@ -169,14 +165,14 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      *  Set the INTERSTITIAL ad listeners
      */
     private void SetUpLevelPlayInterstitial() {
-        Log.e(TEST_LOG, "setLevelPlayInterstitialListener");
+        Log.e(Constants.TEST_LOG, "setLevelPlayInterstitialListener");
         IronSource.setLevelPlayInterstitialListener(new LevelPlayInterstitialListener() {
 
             // Invoked when the interstitial ad was loaded successfully.
             // AdInfo parameter includes information about the loaded ad
             @Override
             public void onAdReady(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdReady (LevelPlay - Interstitial) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdReady (LevelPlay - Interstitial) ********** ");
                 handleShowInterstitialButtonState(true);
 
                 String AdUnit = adInfo.getAdUnit();
@@ -191,7 +187,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 String Precision = adInfo.getPrecision();
                 String EncryptedCPM = adInfo.getEncryptedCPM();
 
-                Log.e(TEST_LOG, "AD INFO (Interstitial):" +
+                Log.e(Constants.TEST_LOG, "AD INFO (Interstitial):" +
                         "\n - AdUnit: " + AdUnit +
                         "\n - AuctionId: " + AuctionId +
                         "\n - AdNetwork: " + AdNetwork +
@@ -209,7 +205,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // Indicates that the ad failed to be loaded
             @Override
             public void onAdLoadFailed(IronSourceError error){
-                Log.e(TEST_LOG, "*********** onAdLoadFailed (LevelPlay - Interstitial) [" + error + "] ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdLoadFailed (LevelPlay - Interstitial) [" + error + "] ********** ");
                 handleShowInterstitialButtonState(false);
             }
 
@@ -217,20 +213,20 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // This is the impression indication.
             @Override
             public void onAdOpened(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdOpened (LevelPlay - Interstitial) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdOpened (LevelPlay - Interstitial) ********** ");
             }
 
             // Invoked when the interstitial ad closed and the user went back to the application screen.
             @Override
             public void onAdClosed(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdClosed (LevelPlay - Interstitial) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdClosed (LevelPlay - Interstitial) ********** ");
                 handleShowInterstitialButtonState(false);
             }
 
             // Invoked when the ad failed to show
             @Override
             public void onAdShowFailed(IronSourceError error, AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdShowFailed (LevelPlay - Interstitial)  [" + error + "] ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdShowFailed (LevelPlay - Interstitial)  [" + error + "] ********** ");
                 handleShowInterstitialButtonState(false);
             }
 
@@ -238,7 +234,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // Invoked when end user clicked on the interstitial ad
             @Override
             public void onAdClicked(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdClicked (LevelPlay - Interstitial) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdClicked (LevelPlay - Interstitial) ********** ");
             }
 
             // Invoked before the interstitial ad was opened, and before the InterstitialOnAdOpenedEvent is reported.
@@ -246,7 +242,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // it's supported by all networks you included in your build.
             @Override
             public void onAdShowSucceeded(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdShowSucceeded (LevelPlay - Interstitial) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdShowSucceeded (LevelPlay - Interstitial) ********** ");
                 String AdUnit = adInfo.getAdUnit();
                 String AuctionId = adInfo.getAuctionId();
                 String AdNetwork = adInfo.getAdNetwork();
@@ -259,7 +255,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 String Precision = adInfo.getPrecision();
                 String EncryptedCPM = adInfo.getEncryptedCPM();
 
-                Log.e(TEST_LOG, "AD INFO (Interstitial - onAdShowSucceeded):" +
+                Log.e(Constants.TEST_LOG, "AD INFO (Interstitial - onAdShowSucceeded):" +
                         "\n - AdUnit: " + AdUnit +
                         "\n - AuctionId: " + AuctionId +
                         "\n - AdNetwork: " + AdNetwork +
@@ -279,7 +275,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      *  Set the REWARDED ad listeners
      */
     private void SetUpLevelPlayRewarded() {
-        Log.e(TEST_LOG, "setLevelPlayRewardedVideoListener");
+        Log.e(Constants.TEST_LOG, "setLevelPlayRewardedVideoListener");
         IronSource.setLevelPlayRewardedVideoManualListener(new LevelPlayRewardedVideoManualListener() {
 
             // Indicates that there's an available ad.
@@ -288,7 +284,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             @Override
             public void onAdReady(AdInfo adInfo){
 
-                Log.e(TEST_LOG, "*********** onAdReady (LevelPlay - Rewarded) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdReady (LevelPlay - Rewarded) ********** ");
                 handleShowRewardedButtonState(true);
 
                 String AdUnit = adInfo.getAdUnit();
@@ -303,7 +299,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
                 String Precision = adInfo.getPrecision();
                 String EncryptedCPM = adInfo.getEncryptedCPM();
 
-                Log.e(TEST_LOG, "AD INFO (Rewarded):" +
+                Log.e(Constants.TEST_LOG, "AD INFO (Rewarded):" +
                         "\n - AdUnit: " + AdUnit +
                         "\n - AuctionId: " + AuctionId +
                         "\n - AdNetwork: " + AdNetwork +
@@ -320,20 +316,20 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // Invoked when the rewarded video failed to load
             @Override
             public void onAdLoadFailed(IronSourceError error){
-                Log.e(TEST_LOG, "*********** onAdLoadFailed (LevelPlay - Rewarded) [" + error + "] ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdLoadFailed (LevelPlay - Rewarded) [" + error + "] ********** ");
                 handleShowRewardedButtonState(false);
             }
 
             // The Rewarded Video ad view has opened. Your activity will loose focus
             @Override
             public void onAdOpened(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdOpened (LevelPlay - Rewarded) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdOpened (LevelPlay - Rewarded) ********** ");
             }
 
             // The Rewarded Video ad view is about to be closed. Your activity will regain its focus
             @Override
             public void onAdClosed(AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdClosed (LevelPlay - Rewarded) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdClosed (LevelPlay - Rewarded) ********** ");
                 handleShowRewardedButtonState(false);
             }
 
@@ -342,13 +338,13 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback
             @Override
             public void onAdRewarded(Placement placement, AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdRewarded (LevelPlay - Rewarded) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdRewarded (LevelPlay - Rewarded) ********** ");
             }
 
             // The rewarded video ad was failed to show
             @Override
             public void onAdShowFailed(IronSourceError error, AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdShowFailed (LevelPlay - Rewarded)  [" + error + "] ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdShowFailed (LevelPlay - Rewarded)  [" + error + "] ********** ");
                 handleShowRewardedButtonState(false);
             }
 
@@ -357,7 +353,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
             // only if it's supported by all networks you included in your build
             @Override
             public void onAdClicked(Placement placement, AdInfo adInfo){
-                Log.e(TEST_LOG, "*********** onAdClicked (LevelPlay - Rewarded) ********** ");
+                Log.e(Constants.TEST_LOG, "*********** onAdClicked (LevelPlay - Rewarded) ********** ");
             }
         });
     }
@@ -513,12 +509,12 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-        Log.e(TEST_LOG, "onPointerCaptureChanged");
+        Log.e(Constants.TEST_LOG, "onPointerCaptureChanged");
         super.onPointerCaptureChanged(hasCapture);
     }
     @Override
     protected void onResume() {
-        Log.e(TEST_LOG, "onResume");
+        Log.e(Constants.TEST_LOG, "onResume");
         super.onResume();
         // call the IronSource onResume method
         IronSource.onResume(this);
@@ -526,7 +522,7 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
     }
     @Override
     protected void onPause() {
-        Log.e(TEST_LOG, "onPause");
+        Log.e(Constants.TEST_LOG, "onPause");
         super.onPause();
         // call the IronSource onPause method
         IronSource.onPause(this);
