@@ -4,8 +4,8 @@ package com.ironsource.adapters.custom.tempo;
 import android.app.Activity;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 
 // ironSource
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType.ADAPTER_ERROR_TYPE_NO_FILL;
@@ -33,33 +33,46 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
     @Override
     public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull InterstitialAdListener listener) {
 
-        // Get App ID
-        String appId = "";
-        JSONObject obj = new JSONObject(adData.getConfiguration());
-        try {
-            appId = obj.getString(AdapterConstants.PARAM_APP_ID);
-        } catch (JSONException e) {
-            TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
+        // Extract App ID
+        String appId = AdapterUtils.extractAppId(adData);
+
+        // Extract CPM Floor
+        Float cpmFloor = AdapterUtils.extractCpmFloor(adData);
+
+        // Other properties
+        String placementId = ""; // Provided by customer at the time of ShowAd, cannot catch here
+
+        // Create listener for ad events
+        TempoAdListener tempoListener = createTempoAdListener(listener);
+
+        // Load the ad on the UI thread
+        activity.runOnUiThread(() -> {
+            interstitialView = new InterstitialView(appId, activity);
+            interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
+        });
+    }
+
+    @Override
+    public void showAd(@NonNull AdData adData, @NonNull InterstitialAdListener ironSourceAdlistener) {
+        TempoUtils.Say("TempoAdapter: showAd (i)", true);
+        if (interstitialReady)  {
+            interstitialView.showAd();
+        } else {
+            ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
         }
+    }
 
-        // Get CPM Floor
-        Float cpmFloor;
-        try {
-            // Confirm string is legit decimal value
-            String cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
-            double decimalNumber = Double.parseDouble(cpmFloorStr);
-            cpmFloorStr = String.valueOf(decimalNumber);
-            cpmFloor = Float.parseFloat(cpmFloorStr);
-            TempoUtils.Say("TempoAdapter: loadAd (i) CPMFloor=" + cpmFloor, true);
-        } catch (JSONException e) {
-            TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
-            cpmFloor = 0.0F;
-        }
+    @Override
+    public boolean isAdAvailable(@NonNull AdData adData) {
+        TempoUtils.Say("TempoAdapter: isAdAvailable (i)", false);
+        return interstitialReady;
+    }
 
-        // Other properties must to be determined
-        String placementId = ""; // Purely placer, given by customer at time of ShowAd, cannot catch
-
-        TempoAdListener tempoListener = new TempoAdListener() {
+    /**
+     * Create listener instance and configure callbacks
+     */
+    private TempoAdListener createTempoAdListener(InterstitialAdListener listener) {
+        return new TempoAdListener() {
             @Override
             public void onTempoAdFetchSucceeded() {
                 TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded");
@@ -109,28 +122,5 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
                 return AdapterConstants.ADAPTER_TYPE;
             }
         };
-
-        final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
-        Float finalCpmFloor = cpmFloor;
-        activity.runOnUiThread(() -> {
-            interstitialView = new InterstitialView(finalAppId, activity);
-            interstitialView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
-        });
-    }
-
-    @Override
-    public void showAd(AdData adData, InterstitialAdListener ironSourceAdlistener) {
-        TempoUtils.Say("TempoAdapter: showAd (i)", true);
-        if (interstitialReady)  {
-            interstitialView.showAd();
-        } else {
-            ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
-        }
-    }
-
-    @Override
-    public boolean isAdAvailable(AdData adData) {
-        TempoUtils.Say("TempoAdapter: isAdAvailable (i)", false);
-        return interstitialReady;
     }
 }

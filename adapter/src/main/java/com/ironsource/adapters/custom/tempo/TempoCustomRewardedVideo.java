@@ -3,9 +3,10 @@ package com.ironsource.adapters.custom.tempo;
 // Generic
 import android.app.Activity;
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 //import androidx.annotation.NonNull; // TODO: Check why IntAds.loadAd uses @NonNull
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 
 // ironSource
 import static com.ironsource.mediationsdk.adunit.adapter.utility.AdapterErrorType.ADAPTER_ERROR_TYPE_NO_FILL;
@@ -33,42 +34,52 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
         }
 
         @Override
-        public void loadAd(AdData adData, Activity activity, RewardedVideoAdListener listener) {
+        public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull RewardedVideoAdListener listener) {
 
-                // Get App ID
-                String appId = "";
-                JSONObject obj = new JSONObject(adData.getConfiguration());
-                try {
-                        appId = obj.getString(AdapterConstants.PARAM_APP_ID);
-                } catch (JSONException e) {
-                        TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
+                // Extract App ID
+                String appId = AdapterUtils.extractAppId(adData);
+
+                // Extract CPM Floor
+                Float cpmFloor = AdapterUtils.extractCpmFloor(adData);
+
+                // Other properties
+                String placementId = ""; // Provided by customer at the time of ShowAd, cannot catch here
+
+                // Create listener for ad events
+                TempoAdListener tempoListener = createTempoAdListener(listener);
+                activity.runOnUiThread(() -> {
+                        rewardedView = new RewardedView(appId, activity);
+                        rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
+                });
+        }
+
+        @Override
+        public void showAd(@NonNull AdData adData, @NonNull RewardedVideoAdListener ironSourceAdlistener) {
+                TempoUtils.Say("TempoAdapter: showAd (r)", true);
+                if (rewardedReady) {
+                        rewardedView.showAd();
+                } else {
+                        ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Rewarded Ad not ready");
                 }
+        }
 
-                // Get CPM Floor
-                Float cpmFloor;
-                try {
-                        // Confirm string is legit decimal value
-                        String cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
-                        double decimalNumber = Double.parseDouble(cpmFloorStr);
-                        cpmFloorStr = String.valueOf(decimalNumber);
-                        cpmFloor = Float.parseFloat(cpmFloorStr);
-                        TempoUtils.Say("TempoAdapter: loadAd (r) CPMFloor=" + cpmFloor, true);
-                } catch (JSONException e) {
-                        TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
-                        cpmFloor = 0.0F;
-                }
+        @Override
+        public boolean isAdAvailable(@NonNull AdData adData) {
+                TempoUtils.Say("TempoAdapter: isAdAvailable (r)", false);
+                return rewardedReady;
+        }
 
-                // Other properties must to be determined
-                String placementId = ""; // Purely placer, given by customer at time of ShowAd, cannot catch
-
-                TempoAdListener tempoListener = new TempoAdListener() {
+        /**
+         * Create listener instance and configure callbacks
+         */
+        private TempoAdListener createTempoAdListener(RewardedVideoAdListener listener) {
+                return new TempoAdListener() {
                         @Override
                         public void onTempoAdFetchSucceeded() {
                                 TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded");
                                 listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 rewardedReady = true;
                                 //super.onTempoAdFetchSucceeded();
-
                         }
 
                         @Override
@@ -113,28 +124,5 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                                 return AdapterConstants.ADAPTER_TYPE;
                         }
                 };
-
-                final String finalAppId = appId; // Variable used in lambda expression should be final or effectively final
-                Float finalCpmFloor = cpmFloor;
-                activity.runOnUiThread(() -> {
-                        rewardedView = new RewardedView(finalAppId, activity);
-                        rewardedView.loadAd(activity, tempoListener, finalCpmFloor, placementId);
-                });
-        }
-
-        @Override
-        public void showAd(AdData adData, RewardedVideoAdListener ironSourceAdlistener) {
-                TempoUtils.Say("TempoAdapter: showAd (r)", true);
-                if (rewardedReady)  {
-                        rewardedView.showAd();
-                } else {
-                        ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Rewarded Ad not ready");
-                }
-        }
-
-        @Override
-        public boolean isAdAvailable(AdData adData) {
-                TempoUtils.Say("TempoAdapter: isAdAvailable (r)", false);
-                return rewardedReady;
         }
 }
