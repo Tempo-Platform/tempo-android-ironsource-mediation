@@ -2,6 +2,6 @@
 -keep class com.ironsource.adapters.custom.tempo.** { public *; }
 
 -repackageclasses 'com.ironsource.adapters.custom.tempo.internal'
--classobfuscationdictionary obf_dict.txt
+#-classobfuscationdictionary obf_dict.txt
 
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
