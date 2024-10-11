@@ -475,11 +475,12 @@ public class DemoActivity extends Activity implements ImpressionDataListener {
      * Returns appropriate key determined by TempoSDK environment
      */
     private String getAppKey() {
-        if(Constants.isProd()) {
-            return APP_KEY_PROD;
+        int envEnumInt = Constants.getEnvironment();
+        if(envEnumInt == 0) {
+            return APP_KEY_DEV;
         }
         else {
-            return APP_KEY_DEV;
+            return APP_KEY_PROD;
         }
     }
 
