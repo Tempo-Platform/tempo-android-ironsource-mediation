@@ -30,7 +30,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.ironsource.sdk:mediationsdk:[8,9)'
+    implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
+    // implementation 'com.ironsource.sdk:mediationsdk:[7.0, 9.0)'
     implementation 'androidx.annotation:annotation:[1,2)'
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.0'
     //implementation(name:'tempo-android-sdk-release', ext:'aar')
