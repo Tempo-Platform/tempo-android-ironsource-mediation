@@ -31,15 +31,16 @@ android {
 
 dependencies {
     // Tempo SDK
-    //implementation(name:'tempo-android-sdk-release', ext:'aar') // local libs folder
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.0'
+    //implementation(name:'tempo-android-sdk-release', ext:'aar') // local libs folder
+
+    // IronSource/LevelPlay - compileOnly as Unity SDK has varied libs with the same classes
+    compileOnly 'com.ironsource.sdk:mediationsdk:[7.0, 9.0)'
+    //implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
 
     // Other
     implementation 'androidx.annotation:annotation:[1,2)'
 
-    // IronSource/LevelPlay - Add dependencies dynamically based on conditions
-    //implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
-    compileOnly 'com.ironsource.sdk:mediationsdk:[7.0, 9.0)'
 
 
 }
