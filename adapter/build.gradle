@@ -30,11 +30,18 @@ android {
 }
 
 dependencies {
-    implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
-    // implementation 'com.ironsource.sdk:mediationsdk:[7.0, 9.0)'
-    implementation 'androidx.annotation:annotation:[1,2)'
+    // Tempo SDK
+    //implementation(name:'tempo-android-sdk-release', ext:'aar') // local libs folder
     implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.0'
-    //implementation(name:'tempo-android-sdk-release', ext:'aar')
+
+    // Other
+    implementation 'androidx.annotation:annotation:[1,2)'
+
+    // IronSource/LevelPlay - Add dependencies dynamically based on conditions
+    //implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
+    compileOnly 'com.ironsource.sdk:mediationsdk:[7.0, 9.0)'
+
+
 }
 
 apply from: 'publish-remote.gradle'
