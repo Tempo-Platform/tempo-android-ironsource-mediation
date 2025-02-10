@@ -31,7 +31,7 @@ android {
 
 dependencies {
     // Tempo SDK
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.3'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.4-rc.0'
     //implementation(name:'tempo-android-sdk-release', ext:'aar') // local libs folder
 
     // IronSource/LevelPlay - compileOnly as Unity SDK has varied libs with the same classes
