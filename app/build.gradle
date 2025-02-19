@@ -28,7 +28,7 @@ dependencies {
 
     // Tempo SDK
     implementation project(':adapter')
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.4'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.5'
     //implementation(name:'tempo-android-sdk-release', ext:'aar')
 
     // Mediation adapter
