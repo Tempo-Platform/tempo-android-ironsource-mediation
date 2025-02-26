@@ -20,7 +20,7 @@ import com.tempoplatform.ads.TempoUtils;
 public class TempoCustomAdapter extends BaseAdapter {
 
     public TempoCustomAdapter() {
-        TempoUtils.Say("TempoAdapter: created");
+        TempoUtils.say("TempoAdapter: created");
     }
 
     @Override
@@ -31,10 +31,10 @@ public class TempoCustomAdapter extends BaseAdapter {
         if (listener != null) {
             // Initialization completed successfully
             listener.onInitSuccess();
-            TempoUtils.Say("TempoAdapter: init adapter", true);
+            TempoUtils.say("TempoAdapter: init adapter", true);
         } else {
             // Initialization failed
-            TempoUtils.Shout("TempoAdapter: init adapter failed", true);
+            TempoUtils.shout("TempoAdapter: init adapter failed", true);
         }
     }
 

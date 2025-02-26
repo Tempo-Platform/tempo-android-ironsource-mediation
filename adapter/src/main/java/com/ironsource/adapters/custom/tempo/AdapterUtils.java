@@ -17,7 +17,7 @@ public class AdapterUtils {
             JSONObject obj = new JSONObject(adData.getConfiguration());
             appId = obj.getString(AdapterConstants.PARAM_APP_ID);
         } catch (JSONException e) {
-            TempoUtils.Warn("TempoAdapter: Could not get AppID from adData", true);
+            TempoUtils.warn("TempoAdapter: Could not get AppID from adData", true);
         }
         return appId;
     }
@@ -32,7 +32,7 @@ public class AdapterUtils {
             String cpmFloorStr = obj.getString(AdapterConstants.PARAM_CPM_FLR);
             cpmFloor = parseCpmFloor(cpmFloorStr);
         } catch (JSONException e) {
-            TempoUtils.Warn("TempoAdapter: Could not get CPMFloor from adData", true);
+            TempoUtils.warn("TempoAdapter: Could not get CPMFloor from adData", true);
         }
         return cpmFloor;
     }
@@ -46,7 +46,7 @@ public class AdapterUtils {
             double decimalNumber = Double.parseDouble(cpmFloorStr);
             return Float.parseFloat(String.valueOf(decimalNumber));
         } catch (NumberFormatException e) {
-            TempoUtils.Warn("TempoAdapter: Invalid CPM floor value: " + cpmFloorStr, true);
+            TempoUtils.warn("TempoAdapter: Invalid CPM floor value: " + cpmFloorStr, true);
             return 0.0F;
         }
     }

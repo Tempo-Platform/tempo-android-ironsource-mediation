@@ -54,7 +54,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public void showAd(@NonNull AdData adData, @NonNull InterstitialAdListener ironSourceAdlistener) {
-        TempoUtils.Say("TempoAdapter: showAd (i)", true);
+        TempoUtils.say("TempoAdapter: showAd (i)", true);
         if (interstitialReady)  {
             interstitialView.showAd();
         } else {
@@ -64,7 +64,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
     @Override
     public boolean isAdAvailable(@NonNull AdData adData) {
-        TempoUtils.Say("TempoAdapter: isAdAvailable (i)", false);
+        TempoUtils.say("TempoAdapter: isAdAvailable (i)", false);
         return interstitialReady;
     }
 
@@ -75,7 +75,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         return new TempoAdListener() {
             @Override
             public void onTempoAdFetchSucceeded() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchSucceeded");
+                TempoUtils.say("TempoAdapter: onInterstitialAdFetchSucceeded");
                 listener.onAdLoadSuccess(); // Indicates that interstitial ad was loaded successfully
                 interstitialReady = true;
                 //super.onTempoAdFetchSucceeded();
@@ -83,28 +83,28 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
             @Override
             public void onTempoAdFetchFailed(String reason) {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdFetchFailed: " + reason);
+                TempoUtils.say("TempoAdapter: onInterstitialAdFetchFailed: " + reason);
                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onTempoAdFetchFailed(reason);
             }
 
             @Override
             public void onTempoAdDisplayed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdDisplayed");
+                TempoUtils.say("TempoAdapter: onInterstitialAdDisplayed");
                 listener.onAdOpened();
                 //super.onTempoAdDisplayed();
             }
 
             @Override
             public void onTempoAdShowFailed(String reason) {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdShowFailed: " + reason);
+                TempoUtils.say("TempoAdapter: onInterstitialAdShowFailed: " + reason);
                 listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
                 //super.onTempoAdShowFailed(reason);
             }
 
             @Override
             public void onTempoAdClosed() {
-                TempoUtils.Say("TempoAdapter: onInterstitialAdClosed");
+                TempoUtils.say("TempoAdapter: onInterstitialAdClosed");
                 listener.onAdClosed();
                 interstitialReady = false;
                 //super.onTempoAdClosed();
@@ -112,13 +112,13 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
 
             @Override
             public String getTempoAdapterVersion() {
-                TempoUtils.Say("TempoAdapter: getTempoAdapterVersion (interstitial, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
+                TempoUtils.say("TempoAdapter: getTempoAdapterVersion (interstitial, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
                 return AdapterConstants.ADAPTER_VERSION;
             }
 
             @Override
             public String getTempoAdapterType() {
-                TempoUtils.Say("TempoAdapter: getTempoAdapterType (interstitial, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
+                TempoUtils.say("TempoAdapter: getTempoAdapterType (interstitial, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
                 return AdapterConstants.ADAPTER_TYPE;
             }
         };

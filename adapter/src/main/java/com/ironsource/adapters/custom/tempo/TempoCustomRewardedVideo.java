@@ -55,7 +55,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void showAd(@NonNull AdData adData, @NonNull RewardedVideoAdListener ironSourceAdlistener) {
-                TempoUtils.Say("TempoAdapter: showAd (r)", true);
+                TempoUtils.say("TempoAdapter: showAd (r)", true);
                 if (rewardedReady) {
                         rewardedView.showAd();
                 } else {
@@ -65,7 +65,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public boolean isAdAvailable(@NonNull AdData adData) {
-                TempoUtils.Say("TempoAdapter: isAdAvailable (r)", false);
+                TempoUtils.say("TempoAdapter: isAdAvailable (r)", false);
                 return rewardedReady;
         }
 
@@ -76,7 +76,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 return new TempoAdListener() {
                         @Override
                         public void onTempoAdFetchSucceeded() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchSucceeded");
+                                TempoUtils.say("TempoAdapter: onRewardedAdFetchSucceeded");
                                 listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 rewardedReady = true;
                                 //super.onTempoAdFetchSucceeded();
@@ -84,14 +84,14 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
                         @Override
                         public void onTempoAdFetchFailed(String reason) {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdFetchFailed: " + reason);
+                                TempoUtils.say("TempoAdapter: onRewardedAdFetchFailed: " + reason);
                                 listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                                 //super.onTempoAdFetchFailed(reason);
                         }
 
                         @Override
                         public void onTempoAdDisplayed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdDisplayed");
+                                TempoUtils.say("TempoAdapter: onRewardedAdDisplayed");
                                 listener.onAdOpened();
                                 listener.onAdRewarded();
                                 //super.onTempoAdDisplayed();
@@ -99,14 +99,14 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
                         @Override
                         public void onTempoAdShowFailed(String reason) {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdShowFailed: " + reason);
+                                TempoUtils.say("TempoAdapter: onRewardedAdShowFailed: " + reason);
                                 listener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, reason);
                                 //super.onTempoAdShowFailed(reason);
                         }
 
                         @Override
                         public void onTempoAdClosed() {
-                                TempoUtils.Say("TempoAdapter: onRewardedAdClosed");
+                                TempoUtils.say("TempoAdapter: onRewardedAdClosed");
                                 listener.onAdClosed();
                                 rewardedReady = false;
                                 //super.onTempoAdClosed();
@@ -114,13 +114,13 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
                         @Override
                         public String getTempoAdapterVersion() {
-                                TempoUtils.Say("TempoAdapter: getTempoAdapterVersion (rewarded, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
+                                TempoUtils.say("TempoAdapter: getTempoAdapterVersion (rewarded, SDK=" + Constants.SDK_VERSION + ", Adapter=" + AdapterConstants.ADAPTER_VERSION + ")");
                                 return AdapterConstants.ADAPTER_VERSION;
                         }
 
                         @Override
                         public String getTempoAdapterType() {
-                                TempoUtils.Say("TempoAdapter: getTempoAdapterType (rewarded, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
+                                TempoUtils.say("TempoAdapter: getTempoAdapterType (rewarded, Type: " + AdapterConstants.ADAPTER_TYPE + ")");
                                 return AdapterConstants.ADAPTER_TYPE;
                         }
                 };
