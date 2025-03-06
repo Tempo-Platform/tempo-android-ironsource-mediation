@@ -2,6 +2,9 @@ package com.ironsource.adapters.custom.tempo;
 
 // Generic
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 //import androidx.annotation.NonNull; // TODO: Check why IntAds.loadAd uses @NonNull
@@ -35,7 +38,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull RewardedVideoAdListener listener) {
-
+                TempoUtils.shout("TempoAdapter: loadAd (adapter) TRIGGERED", true);
                 // Extract App ID
                 String appId = AdapterUtils.extractAppId(adData);
 
@@ -50,16 +53,19 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 activity.runOnUiThread(() -> {
                         rewardedView = new RewardedView(appId, activity);
                         rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
+//                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//                                rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
+//                        }, 2000);
                 });
         }
 
         @Override
-        public void showAd(@NonNull AdData adData, @NonNull RewardedVideoAdListener ironSourceAdlistener) {
+        public void showAd(@NonNull AdData adData, @NonNull RewardedVideoAdListener ironSourceAdListener) {
                 TempoUtils.say("TempoAdapter: showAd (r)", true);
                 if (rewardedReady) {
                         rewardedView.showAd();
                 } else {
-                        ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Rewarded Ad not ready");
+                        ironSourceAdListener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Rewarded Ad not ready");
                 }
         }
 
@@ -76,16 +82,16 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 return new TempoAdListener() {
                         @Override
                         public void onTempoAdFetchSucceeded() {
-                                TempoUtils.say("TempoAdapter: onRewardedAdFetchSucceeded");
-                                listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
+                                TempoUtils.shout("TempoAdapter: onRewardedAdFetchSucceeded");
                                 rewardedReady = true;
+                                listener.onAdLoadSuccess(); // Indicates that rewarded ad was loaded successfully
                                 //super.onTempoAdFetchSucceeded();
                         }
 
                         @Override
                         public void onTempoAdFetchFailed(String reason) {
                                 TempoUtils.say("TempoAdapter: onRewardedAdFetchFailed: " + reason);
-                                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
+                                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, reason); // The rewarded ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                                 //super.onTempoAdFetchFailed(reason);
                         }
 

@@ -2,6 +2,9 @@ package com.ironsource.adapters.custom.tempo;
 
 // Generic
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 //import org.json.JSONException;
@@ -49,16 +52,19 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         activity.runOnUiThread(() -> {
             interstitialView = new InterstitialView(appId, activity);
             interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
+//            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//                interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
+//            }, 2000);
         });
     }
 
     @Override
-    public void showAd(@NonNull AdData adData, @NonNull InterstitialAdListener ironSourceAdlistener) {
+    public void showAd(@NonNull AdData adData, @NonNull InterstitialAdListener ironSourceAdListener) {
         TempoUtils.say("TempoAdapter: showAd (i)", true);
         if (interstitialReady)  {
             interstitialView.showAd();
         } else {
-            ironSourceAdlistener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
+            ironSourceAdListener.onAdShowFailed(ADAPTER_ERROR_INTERNAL, "Interstitial Ad not ready");
         }
     }
 
@@ -84,7 +90,7 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
             @Override
             public void onTempoAdFetchFailed(String reason) {
                 TempoUtils.say("TempoAdapter: onInterstitialAdFetchFailed: " + reason);
-                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, null); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
+                listener.onAdLoadFailed(ADAPTER_ERROR_TYPE_NO_FILL, ADAPTER_ERROR_INTERNAL, reason); // The interstitial ad failed to load. Use ironSource ErrorTypes (No Fill / Other)
                 //super.onTempoAdFetchFailed(reason);
             }
 
