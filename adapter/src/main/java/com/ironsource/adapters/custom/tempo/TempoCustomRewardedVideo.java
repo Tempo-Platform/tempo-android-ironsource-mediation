@@ -38,7 +38,7 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
 
         @Override
         public void loadAd(@NonNull AdData adData, @NonNull Activity activity, @NonNull RewardedVideoAdListener listener) {
-                TempoUtils.shout("TempoAdapter: loadAd (adapter) TRIGGERED", true);
+
                 // Extract App ID
                 String appId = AdapterUtils.extractAppId(adData);
 
