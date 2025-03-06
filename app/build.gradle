@@ -29,4 +29,5 @@ dependencies {
     // Tempo SDK
     implementation project(':adapter')
     implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.8'
 }

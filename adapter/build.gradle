@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    api 'io.github.tempo-platform:tempo-android-sdk:1.6.8-rc.1'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.6.8'
     implementation 'com.unity3d.ads-mediation:mediation-sdk:[7.9, 9.0)'
 
     // Other

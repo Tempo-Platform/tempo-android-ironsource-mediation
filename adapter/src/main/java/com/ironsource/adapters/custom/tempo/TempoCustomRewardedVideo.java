@@ -53,9 +53,6 @@ public class TempoCustomRewardedVideo extends BaseRewardedVideo <TempoCustomAdap
                 activity.runOnUiThread(() -> {
                         rewardedView = new RewardedView(appId, activity);
                         rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
-//                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//                                rewardedView.loadAd(activity, tempoListener, cpmFloor, placementId);
-//                        }, 2000);
                 });
         }
 

@@ -52,9 +52,6 @@ public class TempoCustomInterstitial extends BaseInterstitial<TempoCustomAdapter
         activity.runOnUiThread(() -> {
             interstitialView = new InterstitialView(appId, activity);
             interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
-//            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//                interstitialView.loadAd(activity, tempoListener, cpmFloor, placementId);
-//            }, 2000);
         });
     }
 
