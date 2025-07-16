@@ -11,10 +11,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://android-sdk.is.com/'
-        }
-
         flatDir {
             dirs 'adapter/libs'
         }

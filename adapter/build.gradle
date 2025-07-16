@@ -5,15 +5,12 @@ plugins {
 
 android {
     namespace 'com.ironsource.adapters.custom.tempo'
-    compileSdkVersion 34
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
         targetSdk 34
-    }
-
-    defaultConfig {
-        buildConfigField 'String', 'VERSION_NAME', "\"$VERSION_NAME\""
+        versionName = '1.8.1-rc.0'
     }
 
     buildTypes {
@@ -30,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation 'io.github.tempo-platform:tempo-android-sdk:1.7.0'
+    implementation 'io.github.tempo-platform:tempo-android-sdk:1.7.2-rc.15'
     api 'com.unity3d.ads-mediation:mediation-sdk:[8.1, 9.0)'
 
 //    // Other
@@ -48,7 +45,70 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-location:18.0.0'
 }
 
-apply from: 'publish-remote.gradle'
+/* - - - - - Maven Central Publishing - - - - - */
+
+// Required to satisfy Maven requirements
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+// Required to satisfy Maven requirements
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+    // Include README.md or skip entirely if javadoc fails
+    from 'README.md'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'io.github.tempo-platform'
+            artifactId = 'tempo-android-ironsource-adapter'
+            version = android.defaultConfig.versionName
+
+            afterEvaluate {
+                from components.release
+                artifact sourcesJar
+                artifact javadocJar
+            }
+
+            pom {
+                name = artifactId
+                description = "Tempo Mediation Adapter for ironSource"
+                url = 'https://github.com/Tempo-Platform/tempo-android-ironsource-mediation'
+
+                licenses {
+                    license {
+                        name = 'Apache License 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'development'
+                        name = 'development'
+                        email = 'development@tempoplatform.com'
+                    }
+                }
+
+                scm {
+                    connection = 'git@github.com:Tempo-Platform/tempo-android-ironsource-mediation.git'
+                    developerConnection = 'git@github.com:Tempo-Platform/tempo-android-ironsource-mediation.git'
+                    url = 'https://github.com/Tempo-Platform/tempo-android-ironsource-mediation'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "maven"
+            url = layout.buildDirectory.dir('staging-deploy')
+        }
+    }
+}
 
 
 

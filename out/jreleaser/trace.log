@@ -1,0 +1,1125 @@
+[INFO]  JReleaser 1.19.0
+------------------------------------------------------------
+jreleaser 1.19.0
+------------------------------------------------------------
+Build time:   2025-06-30 18:28:25Z
+Revision:     ecaef0d76d84f702c96e129073966bafa145456a
+JVM:          17.0.10 (Oracle Corporation 17.0.10+11-LTS-240)
+------------------------------------------------------------
+[INFO]  Configuring with jreleaser.yml
+[INFO]    - basedir set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation
+[INFO]    - outputdir set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser
+[INFO]  Reading configuration
+[DEBUG]   - basedir set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation
+[DEBUG]   - baseOutputDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out
+[DEBUG]   - outputDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser
+[DEBUG]   - checksumDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\checksums
+[DEBUG]   - catalogsDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\catalogs
+[DEBUG]   - signaturesDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\signatures
+[DEBUG]   - prepareDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\prepare
+[DEBUG]   - packageDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\package
+[DEBUG]   - downloadDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\download
+[DEBUG]   - assembleDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\assemble
+[DEBUG]   - artifactsDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\artifacts
+[DEBUG]   - deployDirectory set to C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\out\jreleaser\deploy
+[INFO]  git-root-search set to false
+[INFO]  Loading variables from C:\Users\omnib\.jreleaser\config.toml
+[DEBUG] The following variables are defined in config.toml:
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_APP_PASSWORD
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_APP_TOKEN
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_APP_USERNAME
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_PASSWORD
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_TOKEN
+[DEBUG]   JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_USERNAME
+[DEBUG]   JRELEASER_GITHUB_TOKEN
+[DEBUG]   JRELEASER_GPG_KEYNAME
+[DEBUG]   JRELEASER_GPG_PASSPHRASE
+[DEBUG]   JRELEASER_GPG_PUBLIC_KEY
+[DEBUG]   JRELEASER_GPG_SECRET_KEY
+[DEBUG]   JRELEASER_MAVENCENTRAL_APP_PASSWORD
+[DEBUG]   JRELEASER_MAVENCENTRAL_APP_TOKEN
+[DEBUG]   JRELEASER_MAVENCENTRAL_APP_USERNAME
+[DEBUG]   JRELEASER_MAVENCENTRAL_PASSWORD
+[DEBUG]   JRELEASER_MAVENCENTRAL_TOKEN
+[DEBUG]   JRELEASER_MAVENCENTRAL_USERNAME
+[DEBUG]   JRELEASER_PROJECT_JAVA_GROUP_ID
+[INFO]  Validating configuration
+[INFO]  Strict mode set to false
+[DEBUG] adjusting distributions with assemblies
+[DEBUG]   [validation] --== ASSEMBLE ==--
+[DEBUG]   [validation] hooks
+[DEBUG]   [validation] hooks.command
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] hooks.script
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] project
+[DEBUG]   [validation] project.languages.java
+[DEBUG]   [validation] download
+[DEBUG]   [validation] catalog.swid
+[DEBUG]   [validation] catalog.swid.swid-tag
+[DEBUG]   [validation] assemble
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] signing
+[DEBUG]   [validation] release
+[DEBUG]   [validation] release.github
+[DEBUG]   [validation] checksum
+[DEBUG]   [validation] deploy
+[DEBUG]   [validation] deploy.maven
+[DEBUG]   [validation] deploy.maven.mavenCentral
+[DEBUG]   [validation] upload
+[DEBUG]   [validation] catalog
+[DEBUG]   [validation] catalog.sbom
+[DEBUG]   [validation] catalog.sbom.cyclonedx
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.sbom.syft
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.github
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.slsa
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce
+[DEBUG]   [validation] - disabled
+[DEBUG]   [postvalidation] project
+[DEBUG]   [postvalidation] assemble
+[DEBUG]   [postvalidation] assemble.deb
+[DEBUG]   [postvalidation] assemble.jpackage
+[DEBUG]   [resolution] assemble
+[DEBUG]   [validation] --== FULL ==--
+[DEBUG]   [validation] hooks
+[DEBUG]   [validation] hooks.command
+[DEBUG]   [validation] hooks.script
+[DEBUG]   [validation] project
+[DEBUG]   [validation] project.languages.java
+[DEBUG]   [validation] download
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.swid
+[DEBUG]   [validation] catalog.swid.swid-tag
+[DEBUG]   [validation] assemble
+[DEBUG]   [validation] signing
+[DEBUG]   [validation] release
+[DEBUG]   [validation] release.github
+[DEBUG]   [validation] checksum
+[DEBUG]   [validation] deploy
+[DEBUG]   [validation] deploy.maven
+[DEBUG]   [validation] deploy.maven.mavenCentral
+[DEBUG]   [validation] deploy.maven.mavenCentral.app
+[DEBUG]   [validation] upload
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] packagers
+[DEBUG]   [validation] files
+[DEBUG]   [validation] catalog
+[DEBUG]   [validation] catalog.sbom
+[DEBUG]   [validation] catalog.sbom.cyclonedx
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.sbom.syft
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.github
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] catalog.slsa
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce
+[DEBUG]   [validation] announce.article
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.bluesky
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discussions
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discord
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.discourse
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.gitter
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.googleChat
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.linkedin
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.http
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.smtp
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.mastodon
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.mattermost
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.openCollective
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.sdkman
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.slack
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.teams
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.telegram
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.twitter
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.webhooks
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] announce.zulip
+[DEBUG]   [validation] - disabled
+[DEBUG]   [validation] - disabled
+[DEBUG]   [postvalidation] project
+[DEBUG]   [postvalidation] assemble
+[DEBUG]   [postvalidation] assemble.deb
+[DEBUG]   [postvalidation] assemble.jpackage
+[DEBUG]   [postvalidation] distributions
+environment:
+ 
+hooks:
+    enabled: false
+    active: NEVER
+    command:
+        enabled: false
+        active: NEVER
+    script:
+        enabled: false
+        active: NEVER
+ 
+project:
+    name: tempo-android-ironsource-adapter
+    version: 1.8.0-rc.0
+    versionPattern: SEMVER
+    snapshot:
+        enabled: false
+        pattern: .*-SNAPSHOT
+        label: early-access
+        fullChangelog: false
+    description: Tempo Mediation Adapter for ironSource
+    license: Apache-2.0
+    authors:
+        Tempo
+    stereotype: NONE
+    links:
+        homepage: https://github.com/Tempo-Platform/tempo-android-ironsource-mediation
+        documentation: https://github.com/Tempo-Platform/tempo-android-ironsource-mediation
+        license: https://spdx.org/licenses/Apache-2.0.html
+        bugTracker: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+        vcsBrowser: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+    extraProperties:
+        versionMajor: 1
+        versionMinor: 8
+        versionPatch: 0
+        versionNumber: 1.8.0
+        versionTag: rc.0
+        versionWithUnderscores: 1_8_0_rc_0
+        versionWithDashes: 1-8-0-rc-0
+        versionNumberWithUnderscores: 1_8_0
+        versionNumberWithDashes: 1-8-0
+        effectiveVersionWithUnderscores: 1_8_0_rc_0
+        effectiveVersionWithDashes: 1-8-0-rc-0
+    languages:
+        java:
+            enabled: true
+            groupId: io.github.tempo-platform
+            artifactId: tempo-android-ironsource-adapter
+            jvmOptions:
+            environmentVariables:
+            multiProject: false
+ 
+platform:
+ 
+release:
+    github:
+        enabled: true
+        host: github.com
+        owner: Tempo-Platform
+        name: tempo-android-ironsource-mediation
+        username: Tempo-Platform
+        token: ************
+        artifacts: true
+        files: true
+        checksums: true
+        catalogs: true
+        signatures: true
+        repoUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+        repoCloneUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}.git
+        commitUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/commits
+        srcUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/blob/{{repoBranch}}
+        downloadUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/download/{{tagName}}/{{artifactFile}}
+        releaseNotesUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/tag/{{tagName}}
+        latestReleaseUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/latest
+        issueTrackerUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+        tagName: v{{projectVersion}}
+        releaseName: Release {{tagName}}
+        branch: sc-4219/upgrade-maven-repo
+        branchPush: sc-4219/upgrade-maven-repo
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        sign: false
+        skipTag: false
+        skipRelease: false
+        overwrite: false
+        update:
+            enabled: false
+        apiEndpoint: https://api.github.com
+        connectTimeout: 20
+        readTimeout: 60
+        changelog:
+            enabled: true
+            append:
+                enabled: false
+            links: false
+            skipMergeCommits: false
+            formatted: NEVER
+            hide:
+            contributors:
+        milestone:
+            name: {{tagName}}
+            close: true
+        issues:
+            enabled: false
+            comment: 🎉 This issue has been resolved in `{{tagName}}` ([Release Notes]({{releaseNotesUrl}}))
+            label:
+                name: released
+                color: #FF0000
+                description: Issue has been released
+        prerelease:
+            enabled: false
+        draft: false
+        releaseNotes:
+            enabled: false
+        makeLatest: true
+ 
+checksum:
+    name: checksums.txt
+    individual: false
+    algorithms:
+        SHA_256
+    artifacts: true
+    files: true
+ 
+signing:
+    enabled: true
+    active: ALWAYS
+    armored: true
+    verify: true
+    mode: FILE
+    artifacts: true
+    files: true
+    checksums: true
+    catalogs: true
+    passphrase: ************
+    publicKey: ************
+    secretKey: ************
+ 
+announce:
+    enabled: false
+    active: NEVER
+    article:
+        enabled: false
+        active: NEVER
+        commitAuthor:
+        repository:
+            enabled: false
+            name: article
+            token: **unset**
+    bluesky:
+        enabled: false
+        active: NEVER
+        handle: **unset**
+        password: **unset**
+    discord:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    discourse:
+        enabled: false
+        active: NEVER
+        apiKey: **unset**
+        username: **unset**
+    discussions:
+        enabled: false
+        active: NEVER
+    gitter:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    googlechat:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    linkedin:
+        enabled: false
+        active: NEVER
+        owner: **unset**
+        accessToken: **unset**
+    smtp:
+        enabled: false
+        active: NEVER
+        auth: false
+        password: **unset**
+    mastodon:
+        enabled: false
+        active: NEVER
+        accessToken: **unset**
+    mattermost:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+        structuredMessage: true
+    opencollective:
+        enabled: false
+        active: NEVER
+        token: **unset**
+    sdkman:
+        enabled: false
+        consumerKey: **unset**
+        consumerToken: **unset**
+    slack:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+        token: **unset**
+    teams:
+        enabled: false
+        active: NEVER
+        webhook: **unset**
+    telegram:
+        enabled: false
+        active: NEVER
+        token: **unset**
+        chatId: **unset**
+    twitter:
+        enabled: false
+        active: NEVER
+        consumerKey: **unset**
+        consumerSecret: **unset**
+        accessToken: **unset**
+        accessTokenSecret: **unset**
+    zulip:
+        enabled: false
+        active: NEVER
+        apiKey: **unset**
+ 
+packagers:
+    appimage:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        developerId: Tempo-Platform
+        developerName: Tempo
+        requiresTerminal: false
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: appimage
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    asdf:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: asdf
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    brew:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        multiPlatform: false
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: homebrew-tap
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+        cask:
+            enabled: false
+    chocolatey:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        apiKey: **unset**
+        remoteBuild: false
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: chocolatey-bucket
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    docker:
+        enabled: false
+        active: NEVER
+        useLocalArtifact: true
+        buildx:
+            enabled: false
+            createBuilder: true
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: docker
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+            versionedSubfolders: false
+        continueOnError: false
+    flatpak:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        developerName: Tempo
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: flatpak
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    gofish:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: Tempo-Platform-fish-food
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    jbang:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: jbang-catalog
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    jib:
+        enabled: false
+        active: NEVER
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: jib
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+            versionedSubfolders: false
+        continueOnError: false
+    macports:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: macports
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    scoop:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: scoop-Tempo-Platform
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    sdkman:
+        enabled: false
+        continueOnError: false
+        connectTimeout: 20
+        readTimeout: 60
+        consumerKey: **unset**
+        consumerToken: **unset**
+    snap:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        remoteBuild: false
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: snap
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    spec:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: Tempo-Platform-spec
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+    winget:
+        enabled: false
+        active: NEVER
+        continueOnError: false
+        commitAuthor:
+            name: jreleaserbot
+            email: jreleaser@kordamp.org
+        package:
+        publisher:
+        installer:
+            type: WIX
+            scope: MACHINE
+            upgradeBehavior: INSTALL
+            dependencies:
+        repository:
+            enabled: false
+            owner: Tempo-Platform
+            name: winget
+            tagName: v{{projectVersion}}
+            branch: HEAD
+            branchPush: HEAD
+            username: Tempo-Platform
+            token: ************
+ 
+download:
+    enabled: false
+    active: NEVER
+ 
+assemble:
+    enabled: false
+    active: NEVER
+ 
+deploy:
+    enabled: true
+    active: ALWAYS
+    maven:
+        enabled: true
+        active: ALWAYS
+        pomchecker:
+            version: 1.14.0
+            failOnWarning: true
+            failOnError: true
+            strict: true
+        mavenCentral:
+            app:
+                enabled: true
+                active: ALWAYS
+                connectTimeout: 20
+                readTimeout: 60
+                authorization: BEARER
+                url: https://central.sonatype.com/api/v1/publisher
+                username: ************
+                password: ************
+                sign: true
+                checksums: true
+                sourceJar: true
+                javadocJar: true
+                verifyPom: false
+                applyMavenCentralRules: true
+                snapshotSupported: true
+                stagingRepositories:
+                    adapter/build/staging-deploy
+                stage: FULL
+                namespace: io.github.tempo-platform
+                verifyUrl: https://repo1.maven.org/maven2/{{path}}/{{filename}}
+                retryDelay: 20
+                maxRetries: 100
+ 
+upload:
+    enabled: false
+    active: NEVER
+ 
+catalog:
+    enabled: false
+    active: NEVER
+    github:
+        enabled: false
+        active: NEVER
+        artifacts: true
+        files: true
+        deployables: true
+    sbom:
+        enabled: false
+        active: NEVER
+        cyclonedx:
+            enabled: false
+            active: NEVER
+            distributions: false
+            files: false
+            pack:
+                enabled: false
+        syft:
+            enabled: false
+            active: NEVER
+            distributions: false
+            files: false
+            pack:
+                enabled: false
+    slsa:
+        enabled: false
+        active: NEVER
+        artifacts: true
+        files: true
+        deployables: true
+    swid:
+        enabled: false
+        active: NEVER
+        name: swid-tag
+        path: SWIDTAG
+        tagId: 39b7adf6-bda1-3d97-b4b9-c680587a0066
+        tagVersion: 1
+        lang: en-US
+        corpus: false
+        patch: false
+        entities:
+            entity 0:
+                name: tempo-android-ironsource-adapter
+                regid: https://github.com/Tempo-Platform/tempo-android-ironsource-mediation
+                roles:
+                    softwareCreator
+                    tagCreator
+ 
+[INFO]  Project version set to 1.8.0-rc.0
+[INFO]  Release is not snapshot
+[INFO]  Timestamp is 2025-07-16T17:33:49.8386311+10:00
+[INFO]  HEAD is at 8072194
+[INFO]  Platform is windows-x86_64
+[DEBUG] loading extension default-jreleaser-mustache:org.jreleaser.extensions.internal.mustache.DefaultMustacheExtension
+[DEBUG] adding org.jreleaser.extensions.internal.mustache.DefaultMustacheExtensionPoint from default-jreleaser-mustache extension
+[INFO]  yolo set to false
+[INFO]  dry-run set to false
+[INFO]  Generating changelog
+[DEBUG] resolving commits
+[DEBUG] looking for tag that matches 'v1.8.0-rc.0'
+[DEBUG] looking for tags that match 'v.*', excluding 'v1.8.0-rc.0'
+[DEBUG] sorting commits null
+[INFO]  Storing changelog: out\jreleaser\release\CHANGELOG.md
+[DEBUG] ## Changelog
+
+8072194 Merge pull request #21 from Tempo-Platform/sc-4065/updated-android-sdk-for-stripe-account-id
+
+Sc 4065/updated android sdk for stripe account
+ac35138 SDK 1.7.0 / Adapter 1.8.0
+10a894e working for sdk=1.7.0/adapter=1.8.0
+d367e7f 1.7.7 (SDK 1.6.8) - rmv (non) error output msg
+c0de9d6 Merge pull request #20 from Tempo-Platform/sc-3941/create-ironsource-levelplay-native-android
+
+Sc 3941/create ironsource levelplay native android
+b19b111 1.7.6 (SDK 1.6.8)
+c5f9377 1.7.6-rc.3 -> fixed null error
+0ea2f37 Merge pull request #19 from Tempo-Platform/sc-3918/fix-initial-loadad-bug-where-location-not
+
+Sc 3918/fix initial loadad bug where location not
+84210ed v1.7.5 (SDK 1.6.7)
+ee5768c v1.7.5 (SDK 1.6.6)
+5331a22 Merge pull request #18 from Tempo-Platform/gpay-fix
+
+Gpay fix
+6fdb55d 1.6.5
+e5a2136 Ready for prod release
+0853a0a 1.7.4-rc.0
+633130d 1.7.2
+ae0e5ad Merge pull request #17 from Tempo-Platform/sc-3597/add-js-accessible-method-in-java-codebase
+
+Sc 3597/add js accessible method in java codebase
+d254625 1.7.0
+8d6962d rc7 compileTime
+8256790 rc5
+9f89a24 rc-1
+456b970 Merge pull request #16 from Tempo-Platform/sc-3418/bug-android-obfuscated-class-names-clashing
+
+Sc 3418/bug android obfuscated class names clashing
+15323bf dict off
+fbe4f46 1.5.6
+a3a143d Merge pull request #15 from Tempo-Platform/sc-2673/showads-hangs-if-no-internet
+
+1.6.2 release
+c56d74c 1.6.2 release
+edfdab8 SDK 1.5.3-rc.9 beta
+d1f6d5e Merge pull request #14 from Tempo-Platform/sc-167/android-sdk-confirm-all-possible-errors-in
+
+Sc 167/android sdk confirm all possible errors in
+0269415 rc8
+f14fcf1 SDK 1.5.3-rc.6 confirmed working
+9827c29 1.6.2-rc.0
+dae8eb0 Merge pull request #13 from Tempo-Platform/sc-2597/determine-actual-size-of-sdks
+
+Checks done
+3cab7fa Checks done
+8037df1 Merge pull request #12 from Tempo-Platform/sc-837/android-sdk-make-source-code-ip-protected
+
+Sc 837/android sdk make source code ip protected
+8afc08f 1.6.0
+31aa9d1 rc9 | target 34
+2e8dded rc8 (pre)
+7a291ae rc7
+6f1bf38 Merge pull request #11 from Tempo-Platform/sc-2312/release-ironsource-adapters-7-8
+
+Sc 2312/release ironsource adapters 7 8
+db3878f Release 1.5.0 (IS~>8)
+46dfd7d Release 1.4.3 (IS~>7)
+756c96e IS [7,9] rc1
+04e7a1a IS [7,8] rc0
+e2eec8c Merge pull request #10 from Tempo-Platform/sc-2358/android-sdk-released-but-not-downloading
+
+Sc 2358/android sdk released but not downloading
+2634bb6 Release 1.4.2
+c73c148 sdk25, rc25 - cleaned up redundant code in adapter
+a5551ed sdk23 rc24
+4c2cde8 sdk22 rc22
+ec8482e rc20
+5e9e153 rc18
+441c6bb rc17
+b6ff8c9 Worked with TSDK .4.0
+0d44df9 Valid IS version fix
+74c3f8d Valid IS version fix
+7a5bb3c Merge pull request #9 from Tempo-Platform/feature-fc-1187-extend-location-data
+
+Feature fc 1187 extend location data
+1f77d8e SDK 1.4.0
+901f932 countryCode changes testing
+2b51667 Pushed to Maven (1.3.2-rc.0)
+83601b0 Test location for PROD
+38f0180 sdk manifest updated
+bc91183 Merge pull request #8 from Tempo-Platform/fix-add-show-ads-fail
+
+Fix add show ads fail
+2eb6a4a 1.3.0 - Maven issue fixed
+831979b SDK 1.2.3 show fail callbacks
+1e5aa57 SDKv122 Location consent
+f219461 Merge pull request #7 from Tempo-Platform/fix-fc-1162-no-lp-impressions
+
+Impressions hitting on LP
+8f7112c Impressions hitting on LP
+b1447a4 Merge pull request #6 from Tempo-Platform/refactor-fc-897-refactor-redundancy
+
+Refactor fc 897 refactor redundancy
+9a2114f sdk dependency updated > 1.2.0
+6c46df9 Merge branch 'refactor-fc-897-refactor-redundancy' of https://github.com/Tempo-Platform/tempo-android-ironsource-mediation into refactor-fc-897-refactor-redundancy
+935f546 sdk 1.2.0 update
+29163ac Merge pull request #5 from Tempo-Platform/feature-fc-897-refactor-redundancy
+
+Feature fc 897 refactor redundancy
+5d9e540 Tested with 1.2.0-rc.x
+3d319b7 Refactored changes
+1edcaec Added listener changes and local SDK references
+408745a v1.1.0
+2e6230a Merge pull request #4 from Tempo-Platform/feature-fc-171-maven
+ba30902 v1.0.8
+0a8dbd6 Pass tests, ready for prod
+6b210f4 Merge pull request #3 from Tempo-Platform/retrofit2
+
+Retrofit2
+6d8e773 sdk1.0.4 retrofit confirmed
+f7224ad Retrofit
+44e4e96 Merge pull request #2 from Tempo-Platform/jitpack-attempts
+
+Jitpack attempts
+ebf6bb0 Version updates, dependencies and comments
+c8bbad5 Exclude from Settings
+ebc8993 App exclusion from jitpack (hopefully...)
+350f3fc Lint check
+dcfeabb More changes to build.gradle
+fcdf5f8 v1.0.2 (updated gradle values inline with other adapters)
+0265890 v1.0.1
+e794ed0 Fixed showAdFailed crash
+257f40d Version updates to v1
+46bbc62 Added CPM floor field (new app key)
+8d22e77 Update markers
+8f383bc Updated SDK reference version
+4574d13 jitpack-prep
+532e574 Merge pull request #1 from omnibaker/update-to-v1
+
+Update to v1
+d13712e Update readme.md
+0bc3b8a Basic functionality seems to be working. Build works on Unity as well.
+abff2fc No idea
+64dd8ab Update to latest tempo sdk
+e83964a Updat to version with full screen ad
+f8ce4e4 Updating stripe sdk version
+c08fe65 Removing app compat activity
+81f70bc updating to no-appcomapt
+2479ecf Lowering minSDk version to 19
+c621a54 remove stripe test
+a7170dd fixing build
+b83972b rebuilding
+39fa924 Update to latest release
+02b4a16 adding readme
+b24c5c9 update heap size config
+9474755 Update build.gradle with maven repo repdendencey
+b49d3ea memory bug
+e0136c4 fixing memory issues
+ba5a8fa update heapspace
+da38e57 first commit
+[INFO]  Calculating checksums for distributions and files
+[INFO]    [checksum] No files configured for checksum. Skipping
+[INFO]  Cataloging artifacts
+[INFO]    Cataloging is not enabled. Skipping
+[INFO]  Signing distributions and files
+[INFO]    [sign] No files configured for signing. Skipping
+[INFO]  Deploying Maven artifacts
+[INFO]    [maven] Deploying all staged artifacts
+[INFO]      [mavenCentral] Deploying to app
+[INFO]      [mavenCentral] Verifying prerequisites
+[INFO]      [mavenCentral] Signing key F023BC64F5381332 expires at 2027-07-07T14:37:59
+[INFO]      [mavenCentral] Checking if key F023BC64F5381332 has been published
+[DEBUG]     [mavenCentral]  + https://keys.openpgp.org
+[DEBUG]     [mavenCentral]  + https://keys.openpgp.org
+[DEBUG]     [mavenCentral]  x https://keys.openpgp.org
+[DEBUG]     [mavenCentral] Unexpected error Read timed out
+[INFO]      [mavenCentral] Key F023BC64F5381332 was found as published
+[DEBUG]     [sign] signature does not exist: adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.aar.asc
+[INFO]      [sign] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.aar
+[DEBUG]     [verify] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.aar.asc
+[DEBUG]     [sign] signature does not exist: adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.pom.asc
+[INFO]      [sign] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.pom
+[DEBUG]     [verify] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.pom.asc
+[DEBUG]     [sign] signature does not exist: adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-sources.jar.asc
+[INFO]      [sign] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-sources.jar
+[DEBUG]     [verify] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-sources.jar.asc
+[DEBUG]     [sign] signature does not exist: adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-javadoc.jar.asc
+[INFO]      [sign] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-javadoc.jar
+[DEBUG]     [verify] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0-javadoc.jar.asc
+[DEBUG]     [sign] signature does not exist: adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.module.asc
+[INFO]      [sign] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.module
+[DEBUG]     [verify] adapter\build\staging-deploy\io\github\tempo-platform\tempo-android-ironsource-adapter\1.8.1-rc.0\tempo-android-ironsource-adapter-1.8.1-rc.0.module.asc
+[DEBUG]     [mavenCentral] copying files from C:\Users\omnib\Documents\Tempo\AndroidStudio\tempo-android-ironsource-mediation\adapter\build\staging-deploy to C:\Users\omnib\AppData\Local\Temp\maven-central13622239853011740290
+[INFO]      [mavenCentral]  - io.github.tempo-platform-tempo-android-ironsource-adapter-1.8.0-rc.0-bundle.zip
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[DEBUG]     [mavenCentral] opening connection
+[DEBUG]     [mavenCentral] configuring connection
+[DEBUG]     [mavenCentral] handling response
+[INFO]      [mavenCentral] Uploading io.github.tempo-platform-tempo-android-ironsource-adapter-1.8.0-rc.0-bundle.zip
+[INFO]      [mavenCentral] Bundle io.github.tempo-platform-tempo-android-ironsource-adapter-1.8.0-rc.0-bundle.zip uploaded as deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[DEBUG]     [mavenCentral] waiting for deployment (a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5) state to be one of [VALIDATED, FAILED]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 1 of 101
+[DEBUG]     [mavenCentral] attempt 1/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@294b045b]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Publishing deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[DEBUG]     [mavenCentral] waiting for deployment (a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5) state to be one of [PUBLISHED, FAILED]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 1 of 101
+[DEBUG]     [mavenCentral] attempt 1/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@44cab872]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 2 of 101
+[DEBUG]     [mavenCentral] attempt 2/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@2db75e32]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 3 of 101
+[DEBUG]     [mavenCentral] attempt 3/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@e353e1d]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 4 of 101
+[DEBUG]     [mavenCentral] attempt 4/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@7136ad9a]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 5 of 101
+[DEBUG]     [mavenCentral] attempt 5/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@35599228]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 6 of 101
+[DEBUG]     [mavenCentral] attempt 6/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@15324f25]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 7 of 101
+[DEBUG]     [mavenCentral] attempt 7/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@22e650e]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 8 of 101
+[DEBUG]     [mavenCentral] attempt 8/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@376bae20]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 9 of 101
+[DEBUG]     [mavenCentral] attempt 9/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@4687fee7]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 10 of 101
+[DEBUG]     [mavenCentral] attempt 10/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@207f7baa]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 11 of 101
+[DEBUG]     [mavenCentral] attempt 11/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@69ee0861]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 12 of 101
+[DEBUG]     [mavenCentral] attempt 12/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@69f55ea]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 13 of 101
+[DEBUG]     [mavenCentral] attempt 13/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@3c130cb2]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 14 of 101
+[DEBUG]     [mavenCentral] attempt 14/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@68aa1164]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]      [mavenCentral] Attempt 15 of 101
+[DEBUG]     [mavenCentral] attempt 15/101 failed with result: Optional[org.jreleaser.sdk.mavencentral.api.Deployment@12e13abd]
+[DEBUG]     [mavenCentral] querying status for deployment a79fc8e8-c277-4072-a1f2-1d28fe4ad3d5
+[INFO]  Uploading distributions and files
+[INFO]    [upload] Uploading is not enabled. Skipping
+[INFO]  Releasing to https://github.com/Tempo-Platform/tempo-android-ironsource-mediation@sc-4219/upgrade-maven-repo
+[DEBUG] fetching all branches on Tempo-Platform/tempo-android-ironsource-mediation
+[DEBUG] looking up release with tag v1.8.0-rc.0 at repository Tempo-Platform/tempo-android-ironsource-mediation
+[DEBUG] fetching release on Tempo-Platform/tempo-android-ironsource-mediation with tag v1.8.0-rc.0
+[DEBUG] release v1.8.0-rc.0 does not exist
+[DEBUG] creating release v1.8.0-rc.0
+[DEBUG] tagging local repository with v1.8.0-rc.0 @ 8072194
+[DEBUG] creating release on Tempo-Platform/tempo-android-ironsource-mediation with tag v1.8.0-rc.0
+[DEBUG] lookup open milestone 'v1.8.0-rc.0' on Tempo-Platform/tempo-android-ironsource-mediation
+[DEBUG] fetching all milestones on Tempo-Platform/tempo-android-ironsource-mediation with status open
+[DEBUG] checking if release Tempo-Platform/tempo-android-ironsource-mediation@v1.8.0-rc.0 was left as draft
+[DEBUG] fetching release on Tempo-Platform/tempo-android-ironsource-mediation with id 232765732
+[DEBUG] No active distributions for preparing. Skipping
+[DEBUG] No active distributions for packaging. Skipping
+[DEBUG] No active distributions for publishing. Skipping
+[INFO]  Announcing release
+[INFO]    [announce] Announcing is not enabled. Skipping
+[INFO]  Writing output properties to out\jreleaser\output.properties
+[INFO]  JReleaser succeeded after 06:32 m
